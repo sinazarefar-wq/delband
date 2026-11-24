@@ -6,14 +6,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="data:,">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 :root{--wall:#ECE6EB;--ink:#32333F;--muted:#6A6B80;--value:#7173A6;--a1:#9D9FE4;--a2:#E9ACA9;--line:rgba(50,51,63,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:linear-gradient(90deg,#E4DDE3,#ECE6EB 60%,#F0EAEE);min-height:100vh;color:var(--ink);font-family:'Vazirmatn',Tahoma,'Segoe UI',system-ui,sans-serif;font-size:14px;line-height:1.8;-webkit-font-smoothing:antialiased}
+body{background:linear-gradient(90deg,#E4DDE3,#ECE6EB 60%,#F0EAEE);min-height:100vh;color:var(--ink);font-family:'YekanBakh','Yekan Bakh',Tahoma,'Segoe UI',system-ui,sans-serif;font-size:14px;line-height:1.8;-webkit-font-smoothing:antialiased}
 button,input,textarea,select{font:inherit;color:inherit}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
@@ -131,7 +156,7 @@ var DP=[
 [12,'جلیقه','کوئیلت','کوئیلت سبک با دکمه‌های','چوبی؛ گرم و بدون حجم.','کوئیلت پنبه','پریوینکل روشن','۱ / ۲ / ۴ سال',380000]
 ];
 var DEF={admin:{password:'1234'},site:{
-brand:'دلبند',nav:['لباس‌ها','لیست قیمت عمده','درباره ما','تماس'],
+brand:'دلبند',logo:'logo.png',nav:['لباس‌ها','لیست قیمت عمده','درباره ما','تماس'],
 hint1:'کلیک برای دیدن',hint2:'کلیک دوباره برای آوردن به جلو',viewBtn:'مشاهده جزئیات',back:'بازگشت به مجموعه',
 tabs:['روی چوب‌لباسی','پارچه','جزئیات'],
 caps:['روی یک چوب‌لباسی چوبی کوچک آویزان است.','لمسی نرم؛ شسته‌شده برای راحتی کودک.','ریزه‌کاری‌هایی که ماندگار دوخته شده‌اند.'],
@@ -233,12 +258,16 @@ function openForm(i){
   '<h2 style="margin-top:22px;font-size:15px">تصاویر</h2>'+
   '<p class="note" style="margin:0 0 8px">«روی چوب‌لباسی» همان تصویری است که روی ریل نمایش داده می‌شود: بهتر است PNG/WebP با پس‌زمینهٔ شفاف و با قلاب آویز در بالا‌وسط تصویر باشد. برای لباس‌های نمونه، تصویر خالی یعنی استفاده از تصویر پیش‌فرض.</p>'+
   '<div class="imgs">'+imgBox('hanger','روی چوب‌لباسی (ریل)')+imgBox('fabric','پارچه')+imgBox('detail','جزئیات')+'</div>'+
+  '<h2 style="margin-top:22px;font-size:15px">عکس‌های بیشتر (گالری)</h2><p class="note" style="margin:0 0 8px">این عکس‌ها بعد از سه عکس بالا در اسلایدر جزئیات نمایش داده می‌شوند. هر تعداد که بخواهید؛ فقط حافظهٔ مرورگر محدود است.</p><div class="imgs" id="gal"></div><label class="btn sm" style="margin-top:10px"><input type="file" accept="image/*" multiple id="gIn" hidden>+ افزودن عکس</label>'+
   '<div class="bar"><button class="btn fill" id="f_save">ذخیره</button><button class="btn" id="f_cancel">انصراف</button></div>';
   $('#modal').hidden=false;
   $('#f_cancel').onclick=closeForm;
   $('#f_save').onclick=saveForm;
   $('#f_price').oninput=function(){var n=toEn(this.value);$('#f_pv').textContent=n&&!isNaN(n)?money(n)+' تومان':''};
   $('#f_price').oninput();
+  if(!cur.p.gallery)cur.p.gallery=[];
+  paintGal();
+  $('#gIn').onchange=function(){Array.prototype.slice.call(this.files).forEach(function(f){shrink(f,900,function(u){cur.p.gallery.push(u);paintGal()})});this.value=''};
   ['hanger','fabric','detail'].forEach(function(k){
     $('#in_'+k).onchange=function(){
       var f=this.files[0];if(!f)return;
@@ -247,6 +276,11 @@ function openForm(i){
     $('#rm_'+k).onclick=function(){delete cur.p.images[k];paintImg(k)};
     paintImg(k);
   });
+}
+function paintGal(){
+  var g=$('#gal');if(!g)return;
+  g.innerHTML=cur.p.gallery.map(function(u,i){return'<div class="img"><div class="pv" style="background-image:url(\''+u+'\')"></div><button class="btn sm danger" type="button" data-gi="'+i+'">حذف</button></div>'}).join('');
+  $$('[data-gi]',g).forEach(function(b){b.onclick=function(){cur.p.gallery.splice(+b.dataset.gi,1);paintGal()}});
 }
 function fld(id,l,v,h){return'<div class="f"><label>'+l+'</label><input type="text" id="f_'+id+'" value="'+esc(v)+'">'+(h?'<small>'+h+'</small>':'')+'</div>'}
 function imgBox(k,l){return'<div class="img"><div class="pv" id="pv_'+k+'"></div><div style="font-size:12.5px;margin-bottom:6px">'+l+'</div><label class="btn sm"><input type="file" accept="image/*" id="in_'+k+'">بارگذاری</label> <button class="btn sm danger" id="rm_'+k+'" type="button">حذف</button></div>'}
@@ -289,13 +323,28 @@ function form(title,fields){
 }
 function renderTexts(){
   var h='';
-  h+=form('هدر و منو',[['brand','نام برند'],['nav.0','منو ۱ (اسلایدر)'],['nav.1','منو ۲ (لیست قیمت)'],['nav.2','منو ۳ (درباره ما)'],['nav.3','منو ۴ (تماس)']]);
+  h+='<div class="card"><h2>لوگوی هدر</h2><div class="img" style="max-width:300px;margin:0 auto"><div class="pv" id="pv_logo" style="height:100px"></div><div class="bar" style="justify-content:center;margin-top:8px"><label class="btn sm fill"><input type="file" accept="image/*" id="in_logo">انتخاب لوگوی جدید</label><button class="btn sm" id="def_logo" type="button">لوگوی پیش‌فرض</button><button class="btn sm danger" id="rm_logo" type="button">حذف (نمایش متن)</button></div></div><p class="note" style="text-align:center">بهتر است تصویر لوگو با پس‌زمینه شفاف (PNG یا WebP) باشد.</p></div>';
+  h+=form('هدر و منو',[['brand','نام برند (متن جایگزین لوگو)'],['nav.0','منو ۱ (اسلایدر)'],['nav.1','منو ۲ (لیست قیمت)'],['nav.2','منو ۳ (درباره ما)'],['nav.3','منو ۴ (تماس)']]);
   h+=form('اسلایدر رگال',[['hint1','راهنمای پایین (کلیک اول)'],['hint2','راهنمای پایین (کلیک دوم)'],['viewBtn','دکمهٔ جزئیات'],['back','دکمهٔ بازگشت'],['tabs.0','نام تب ۱'],['tabs.1','نام تب ۲'],['tabs.2','نام تب ۳'],['caps.0','زیرنویس تب ۱','area'],['caps.1','زیرنویس تب ۲','area'],['caps.2','زیرنویس تب ۳','area'],['lPrice','برچسب قیمت'],['lSize','برچسب سایز'],['lColor','برچسب رنگ'],['lMat','برچسب جنس'],['unit','واحد پول'],['footTag','نوشتهٔ کنار شماره (پایین اسلایدر)']]);
   h+=form('لیست قیمت عمده',[['priceTitle','عنوان بخش'],['priceSub','توضیح بخش','area']]);
   h+=form('درباره ما',[['aboutTitle','عنوان'],['aboutText','متن','area'],['features.0.t','ویژگی ۱ - عنوان'],['features.0.x','ویژگی ۱ - متن'],['features.1.t','ویژگی ۲ - عنوان'],['features.1.x','ویژگی ۲ - متن'],['features.2.t','ویژگی ۳ - عنوان'],['features.2.x','ویژگی ۳ - متن']]);
   h+=form('بخش تماس',[['contactTitle','عنوان'],['contactText','متن','area']]);
   h+='<button class="btn fill" data-save="p-texts">ذخیرهٔ متن‌ها</button>';
   $('#p-texts').innerHTML=h;
+
+  function paintLogo(){
+    var pv=$('#pv_logo'), u=D.site.logo;
+    pv.style.backgroundImage=u?'url("'+u+'")':'none';
+    pv.textContent=u?'':'بدون لوگو (نمایش متن: '+D.site.brand+')';
+  }
+  paintLogo();
+  $('#in_logo').onchange=function(){
+    var f=this.files[0]; if(!f)return;
+    shrink(f,500,function(u){D.site.logo=u; if(save()){paintLogo(); toast('لوگو ذخیره شد.');}});
+    this.value='';
+  };
+  $('#def_logo').onclick=function(){D.site.logo='logo.png'; if(save()){paintLogo(); toast('لوگوی پیش‌فرض تنظیم شد.');}};
+  $('#rm_logo').onclick=function(){D.site.logo=''; if(save()){paintLogo(); toast('لوگو حذف شد.');}};
 }
 function renderContact(){
   $('#p-contact').innerHTML=form('اطلاعات تماس',[['phone','شمارهٔ تماس (در همهٔ بخش‌های سایت نمایش داده می‌شود)','ltr'],['telegram','آیدی تلگرام (اختیاری، بدون @)','ltr'],['address','نشانی (اختیاری)','area'],['hours','ساعت کاری (اختیاری)']])+
