@@ -7,23 +7,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
 <script>(function(){if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('pre')})()</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'YekanBakh';
+  src: url('fonts/YekanBakh-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 :root{--wall:#ECE6EB;--ink:#32333F;--muted:#6A6B80;--value:#7173A6;--a1:#9D9FE4;--a2:#E9ACA9;--e:cubic-bezier(.2,.75,.2,1);--ns:1}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100%}
 html{scroll-behavior:smooth}
-body{background:var(--wall);color:var(--ink);font-family:'Noto Sans Arabic',Tahoma,'Segoe UI',system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7}
+body{background:var(--wall);color:var(--ink);font-family:'YekanBakh','Yekan Bakh',Tahoma,'Segoe UI',system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
 
 /* ---------- nav ---------- */
 #nav{position:fixed;top:0;left:0;right:0;height:calc(42px*var(--ns));z-index:900;font-size:calc(12.5px*var(--ns));direction:rtl}
-.brand{position:absolute;right:calc(57px*var(--ns));top:calc(3px*var(--ns));font-size:calc(27px*var(--ns));font-weight:300;line-height:1.4}
+.brand{position:absolute;right:calc(57px*var(--ns));top:calc(3px*var(--ns));font-size:calc(27px*var(--ns));font-weight:300;line-height:1.4;display:flex;align-items:center;height:calc(36px*var(--ns))}
+.brand img{height:100%;width:auto;display:block;object-fit:contain}
 .links{position:absolute;left:50%;transform:translateX(-50%);top:calc(10px*var(--ns));display:flex;gap:calc(35px*var(--ns));white-space:nowrap}
 .links a{position:relative;padding-bottom:2px}
 .links a.on::after{content:"";position:absolute;right:0;left:0;bottom:-3px;height:1px;background:var(--ink)}
@@ -181,7 +207,7 @@ html.pre .ln>span{transform:translateY(105%);opacity:0}
  .screen{height:100vh;height:100dvh;min-height:560px;display:flex;flex-direction:column}
  .hero{flex:1 1 auto;height:auto;min-height:0}
  #nav{position:absolute;height:52px;--ns:1}
- .brand{right:18px;top:8px;font-size:23px}
+ .brand{right:18px;top:8px;font-size:23px;height:36px}
  .links,.navtel{display:none}
  .navr{left:18px;top:14px}
  #menuPanel{position:absolute;top:50px;left:14px}
@@ -361,7 +387,7 @@ var DP=[
 [12,'جلیقه','کوئیلت','کوئیلت سبک با دکمه‌های','چوبی؛ گرم و بدون حجم.','کوئیلت پنبه','پریوینکل روشن','۱ / ۲ / ۴ سال',380000]
 ];
 var DEF={admin:{password:'1234'},site:{
-brand:'دلبند',nav:['لباس‌ها','لیست قیمت عمده','درباره ما','تماس'],
+brand:'دلبند',logo:'logo.png',nav:['لباس‌ها','لیست قیمت عمده','درباره ما','تماس'],
 hint1:'کلیک برای دیدن',hint2:'کلیک دوباره برای آوردن به جلو',viewBtn:'مشاهده جزئیات',back:'بازگشت به مجموعه',
 tabs:['روی چوب‌لباسی','پارچه','جزئیات'],
 caps:['روی یک چوب‌لباسی چوبی کوچک آویزان است.','لمسی نرم؛ شسته‌شده برای راحتی کودک.','ریزه‌کاری‌هایی که ماندگار دوخته شده‌اند.'],
@@ -702,7 +728,12 @@ document.addEventListener('click',function(e){if(!e.target.closest('#menuPanel')
 
 function buildStatic(){
   var s=SITE,tel=phoneTel(s.phone),show=phoneShow(s.phone);
-  $('#brand').textContent=s.brand;
+  var br=$('#brand');
+  if(s.logo){
+    br.innerHTML='<img src="'+esc(s.logo)+'" alt="'+esc(s.brand)+'" onerror="this.parentNode.textContent=this.alt">';
+  }else{
+    br.textContent=s.brand;
+  }
   var ids=['hero','price','about','contact'];
   $('#links').innerHTML=s.nav.map(function(l,i){return'<a href="#'+ids[i]+'" data-s="'+ids[i]+'"'+(i===0?' class="on"':'')+'>'+esc(l)+'</a>'}).join('');
   menu.innerHTML=s.nav.map(function(l,i){return'<a href="#'+ids[i]+'">'+esc(l)+'</a>'}).join('')+'<a href="'+tel+'">☎ <bdi dir="ltr">'+show+'</bdi></a>';
