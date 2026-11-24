@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>دلبند | پوشاک بچه‌گانه</title>
+<meta name="description" content="دلبند؛ رگال لباس‌های نرم و پاستلی کودک با قیمت عمده.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<script>(function(){if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('pre')})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--wall:#ECE6EB;--ink:#32333F;--muted:#6A6B80;--value:#7173A6;--a1:#9D9FE4;--a2:#E9ACA9;--e:cubic-bezier(.2,.75,.2,1);--ns:1}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+html{scroll-behavior:smooth}
+body{background:var(--wall);color:var(--ink);font-family:'Vazirmatn',Tahoma,'Segoe UI',system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* ---------- nav ---------- */
+#nav{position:fixed;top:0;left:0;right:0;height:calc(42px*var(--ns));z-index:900;font-size:calc(12.5px*var(--ns));direction:rtl}
+.brand{position:absolute;right:calc(57px*var(--ns));top:calc(3px*var(--ns));font-size:calc(27px*var(--ns));font-weight:300;line-height:1.4}
+.links{position:absolute;left:50%;transform:translateX(-50%);top:calc(10px*var(--ns));display:flex;gap:calc(35px*var(--ns));white-space:nowrap}
+.links a{position:relative;padding-bottom:2px}
+.links a.on::after{content:"";position:absolute;right:0;left:0;bottom:-3px;height:1px;background:var(--ink)}
+.navr{position:absolute;left:calc(54px*var(--ns));top:calc(10px*var(--ns));display:flex;align-items:center;gap:calc(30px*var(--ns))}
+.navtel{white-space:nowrap}
+.menu{display:flex;align-items:center;gap:calc(21px*var(--ns));font-size:inherit}
+.burger{width:calc(25px*var(--ns));height:calc(13px*var(--ns));position:relative;display:block}
+.burger i{position:absolute;left:0;right:0;height:1px;background:var(--ink)}
+.burger i:nth-child(1){top:0}.burger i:nth-child(2){top:calc(6px*var(--ns))}.burger i:nth-child(3){top:calc(12px*var(--ns))}
+#menuPanel{position:fixed;top:calc(46px*var(--ns));left:calc(40px*var(--ns));z-index:950;background:rgba(246,242,246,.96);border:1px solid rgba(50,51,63,.1);border-radius:14px;padding:10px 6px;min-width:190px;box-shadow:0 12px 40px rgba(60,50,80,.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .3s,transform .4s var(--e),visibility 0s .3s;direction:rtl}
+#menuPanel.open{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+#menuPanel a{display:block;padding:9px 16px;font-size:14px;border-radius:9px}
+#menuPanel a:hover{background:rgba(157,159,228,.18)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100vh;height:100dvh;min-height:520px;overflow:hidden;touch-action:pan-y}
+.wall{position:absolute;inset:0;background:
+radial-gradient(70% 80% at 80% 40%,color-mix(in srgb,var(--wall) 70%,#fff) 0,transparent 70%),
+linear-gradient(90deg,color-mix(in srgb,var(--wall) 93%,#3b2f45) 0%,color-mix(in srgb,var(--wall) 97%,#3b2f45) 30%,var(--wall) 60%,color-mix(in srgb,var(--wall) 96%,#fff) 100%)}
+#frame{position:absolute;width:1440px;height:900px;transform-origin:0 0;direction:ltr}
+#railsvg{position:absolute;left:0;top:0;width:1440px;height:900px;overflow:visible;clip-path:inset(-300px -300px -300px -300px);transition:clip-path .7s cubic-bezier(.65,0,.25,1);pointer-events:none}
+body.detail #railsvg{clip-path:inset(-300px 46% -300px -300px)}
+#floor{position:absolute;left:52px;width:600px;height:60px;background:radial-gradient(closest-side,rgba(70,60,90,.14),transparent);transition:top .55s var(--e);pointer-events:none}
+.piece{position:absolute;left:0;top:0;background-repeat:no-repeat;transition:transform .55s var(--e),opacity .35s ease,filter .55s ease;pointer-events:none;will-change:transform}
+#frame.slow .piece{transition:transform .7s cubic-bezier(.65,0,.25,1),opacity .55s ease,filter .55s ease}
+#ui{position:absolute;inset:0;z-index:300;pointer-events:none}
+.pe,.pe *{pointer-events:auto}
+
+#info{position:absolute;left:1118px;top:198px;width:310px;direction:rtl;text-align:right;transition:transform .75s cubic-bezier(.65,0,.2,1)}
+body.detail #info,body.detail #pager{transform:translateX(-328px)}
+.ln{display:block;overflow:hidden;padding:2px 0}
+.ln>span{display:block}
+.sw{transition:opacity .22s ease,transform .32s var(--e)}
+.sw.out{opacity:0;transform:translateY(5px)}
+.cnt{font-size:12px;color:var(--muted);height:22px;direction:rtl}
+.ttl{margin-top:24px;font-size:34px;font-weight:300;line-height:40px;min-height:84px;white-space:nowrap}
+.rule{margin-top:34px;width:20px;height:1px;background:var(--muted);opacity:.7}
+.desc{margin-top:22px;font-size:14px;line-height:26px;color:var(--muted);width:300px;font-weight:300}
+.specs{margin-top:42px;font-size:12.5px;line-height:27px}
+.specs li>span{display:flex;gap:8px;align-items:baseline}
+.specs b{font-weight:400;width:84px;flex:none}
+.specs em{font-style:normal;color:var(--value);flex:1;line-height:24px}
+.specs .pr em{color:var(--ink);font-weight:500;font-size:14px}
+.specs .pr small{font-size:11px;font-weight:300;color:var(--muted)}
+.vbtn{margin-top:42px;display:inline-flex;align-items:center;gap:14px;font-size:13px;padding-bottom:7px;border-bottom:1px solid var(--ink)}
+.vbtn svg{width:10px;height:10px;stroke:var(--ink);fill:none;stroke-width:1}
+
+#pager{position:absolute;left:1118px;top:752px;width:270px;display:flex;justify-content:space-between;align-items:center;direction:ltr;transition:transform .75s cubic-bezier(.65,0,.2,1),width .75s cubic-bezier(.65,0,.2,1)}
+body.detail #pager{width:596px}
+#pager button{width:38px;height:24px;display:flex;align-items:center;justify-content:center}
+#pager svg{width:36px;height:12px;stroke:var(--ink);fill:none;stroke-width:1;opacity:.55;transition:opacity .3s}
+#pager button:hover svg{opacity:1}
+.pcnt{font-size:12px;color:var(--ink)}
+
+#idx{position:absolute;left:40px;top:250px;font-size:11px;color:var(--muted);text-align:center;direction:ltr;width:20px}
+#idx .tr{width:1px;height:77px;background:rgba(50,51,63,.18);margin:12px auto 19px;position:relative}
+#idx .fl{position:absolute;inset:0;background:var(--ink);transform-origin:top;transition:transform .55s var(--e)}
+#foot{position:absolute;left:53px;top:862px;font-size:11.5px;color:var(--muted);direction:rtl;white-space:nowrap}
+#foot a{color:var(--ink)}
+#hint{position:absolute;left:640px;top:862px;display:flex;align-items:center;font-size:11px;color:var(--muted);direction:rtl;white-space:nowrap}
+#hint svg{width:20px;height:10px;margin:0 14px;stroke:var(--muted);fill:none;stroke-width:1}
+
+/* detail panel */
+#panel{position:absolute;left:1098px;top:118px;width:292px;height:700px;direction:rtl;text-align:right;opacity:0;visibility:hidden;transform:translateX(46px);pointer-events:none;transition:opacity .45s ease,transform .7s var(--e),visibility 0s .5s}
+body.detail #panel{opacity:1;visibility:visible;transform:none;transition-delay:.32s,.32s,0s;pointer-events:auto}
+#panel>*{position:absolute}
+.pback{top:0;right:22px;display:flex;align-items:center;gap:12px;font-size:11.5px}
+.pback svg{width:9px;height:9px;stroke:var(--ink);fill:none;stroke-width:1}
+.ptn{top:52px;left:0;right:22px;display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted)}
+.ptabs{top:80px;left:0;right:22px;display:flex;border-bottom:1px solid rgba(50,51,63,.14)}
+.ptabs button{flex:1;font-size:10.5px;color:var(--muted);padding:6px 0 9px;position:relative}
+.ptabs button.on{color:var(--ink)}
+.ptabs button.on::after{content:"";position:absolute;left:14px;right:0;bottom:-1px;height:1px;background:var(--ink)}
+#imgbox{top:110px;left:0;right:22px;height:470px;background:#F0EAF0;overflow:hidden}
+.lay{position:absolute;inset:0;opacity:0;transform:scale(1.03);transition:opacity .45s ease,transform .9s var(--e)}
+.lay.on{opacity:1;transform:scale(1)}
+.lay .in{position:absolute}
+.lay .in.empty{inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+.pcap{top:596px;left:0;right:22px;font-size:12.5px;line-height:21px;color:var(--muted)}
+.ppr{top:640px;left:0;right:22px;font-size:13px;display:flex;align-items:baseline;gap:8px}
+.ppr b{font-weight:400;color:var(--muted);font-size:12px}
+.ppr strong{font-weight:500;font-size:16px}
+.pcall{top:668px;left:0;right:22px;font-size:12.5px;color:var(--value);display:flex;gap:8px;align-items:center}
+.ptrack{top:80px;right:0;width:1px;height:520px;background:rgba(50,51,63,.12)}
+.ptrack i{position:absolute;right:-1px;top:0;width:3px;height:120px;border-radius:2px;background:rgba(50,51,63,.45);transition:top .5s var(--e)}
+
+/* ---------- sections ---------- */
+section.sec{padding:96px 8vw;position:relative}
+.sec h2{font-size:30px;font-weight:300;line-height:1.5}
+.sec .sub{margin-top:10px;color:var(--muted);font-size:15px;font-weight:300;max-width:640px}
+.sec .rule2{width:24px;height:1px;background:var(--muted);opacity:.7;margin:22px 0 0}
+#price{background:linear-gradient(180deg,var(--wall),color-mix(in srgb,var(--wall) 92%,#fff))}
+.grid{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:20px}
+.card{background:rgba(255,255,255,.5);border:1px solid rgba(50,51,63,.07);border-radius:18px;padding:14px 14px 18px;cursor:pointer;transition:transform .5s var(--e),box-shadow .5s,background .4s}
+.card:hover{transform:translateY(-4px);background:rgba(255,255,255,.8);box-shadow:0 18px 40px rgba(80,70,110,.1)}
+.th{height:236px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(240,234,240,.7));border-radius:12px}
+.th i{display:block;height:88%;background-repeat:no-repeat}
+.card h3{margin-top:14px;font-size:16px;font-weight:400}
+.card .pr{margin-top:6px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.card .pr small{font-size:11.5px;color:var(--muted)}
+.card .pr b{font-size:19px;font-weight:500}
+.card .pr span{font-size:12px;color:var(--muted)}
+.chips{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;padding:2px 11px;border-radius:99px;border:1px solid color-mix(in srgb,var(--a1) 60%,transparent);background:color-mix(in srgb,var(--a1) 12%,transparent);color:var(--ink)}
+.chip.c2{border-color:color-mix(in srgb,var(--a2) 70%,transparent);background:color-mix(in srgb,var(--a2) 16%,transparent)}
+.feats{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.feat{padding:26px 24px;border-radius:18px;background:rgba(255,255,255,.45);border:1px solid rgba(50,51,63,.07)}
+.feat i{display:block;width:12px;height:12px;border-radius:50%;background:var(--a1);margin-bottom:16px}
+.feat:nth-child(2) i{background:var(--a2)}
+.feat h3{font-size:17px;font-weight:400}
+.feat p{margin-top:6px;color:var(--muted);font-size:14px;font-weight:300}
+#contact{background:color-mix(in srgb,var(--wall) 90%,#3b2f45);text-align:center}
+#contact .sub{margin-inline:auto}
+.bigtel{display:inline-block;margin-top:30px;font-size:clamp(28px,5vw,46px);font-weight:300;letter-spacing:.04em;direction:ltr;border-bottom:1px solid var(--ink);padding-bottom:6px}
+.crow{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:99px;border:1px solid var(--ink);font-size:14px;transition:background .3s,color .3s}
+.btn:hover,.btn.fill{background:var(--ink);color:#fff}
+.btn.fill:hover{background:var(--value);border-color:var(--value)}
+.cinfo{margin-top:26px;color:var(--muted);font-size:14px;line-height:2}
+footer.fo{padding:26px 8vw 96px;text-align:center;font-size:12.5px;color:var(--muted);background:color-mix(in srgb,var(--wall) 90%,#3b2f45)}
+footer.fo a{color:var(--ink);border-bottom:1px solid rgba(50,51,63,.3)}
+
+.fab{position:fixed;right:18px;bottom:18px;z-index:960;display:flex;align-items:center;gap:10px;height:50px;padding:0 20px 0 22px;border-radius:25px;background:var(--ink);color:#fff;font-size:15px;box-shadow:0 10px 30px rgba(50,51,63,.28);transition:transform .4s var(--e),background .3s;direction:rtl}
+.fab:hover{transform:translateY(-3px);background:var(--value)}
+.fab svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.fab bdi{letter-spacing:.04em}
+
+/* intro hide */
+html.pre .piece,html.pre #railsvg,html.pre #nav,html.pre .fade0{opacity:0!important}
+html.pre .ln>span{transform:translateY(105%);opacity:0}
+
+/* ---------- mobile ---------- */
+.mi{display:none}
+@media (max-width:820px){
+ .hero{height:max(64vh,430px);min-height:0}
+ #nav{position:absolute;height:52px;--ns:1}
+ .brand{right:18px;top:8px;font-size:23px}
+ .links,.navtel{display:none}
+ .navr{left:18px;top:14px}
+ #menuPanel{position:absolute;top:50px;left:14px}
+ #idx,#foot,#hint{display:none}
+ .mi{display:block;padding:8px 22px 40px;position:relative;background:var(--wall)}
+ .mi #info{position:static;width:auto;transform:none!important}
+ .mi .ttl{font-size:28px;line-height:34px;min-height:0;margin-top:14px}
+ .mi .rule{margin-top:18px}
+ .mi .desc{margin-top:18px;width:auto;font-size:14px}
+ .mi .specs{margin-top:24px}
+ .mi .vbtn{margin-top:26px}
+ .mi #pager{position:static;width:100%!important;margin-top:34px;transform:none!important}
+ .mi #panel{position:static;width:100%;height:auto;margin-top:34px;display:none;opacity:1;visibility:visible;transform:none;pointer-events:auto}
+ body.detail .mi #panel{display:block}
+ .mi #panel>*{position:static}
+ .mi .pback{justify-content:flex-start;margin-bottom:16px}
+ .mi .ptn{margin-bottom:10px}
+ .mi #imgbox{height:auto;aspect-ratio:4/5;position:relative;margin-top:0}
+ .mi .pcap{margin-top:14px}
+ .mi .ppr{margin-top:14px}.mi .pcall{margin-top:10px}
+ .mi .ptrack{display:none}
+ section.sec{padding:64px 22px}
+ .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+ .th{height:170px}
+ .card h3{font-size:14px}.card .pr b{font-size:16px}
+ .fab{height:46px;font-size:14px;padding:0 16px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#hero" id="brand"></a>
+  <div class="links" id="links"></div>
+  <div class="navr">
+    <a class="navtel" id="navtel" href="#"><bdi dir="ltr"></bdi></a>
+    <button class="menu" id="menuBtn" aria-label="منو"><span>منو</span><span class="burger"><i></i><i></i><i></i></span></button>
+  </div>
+</nav>
+<div id="menuPanel"></div>
+
+<section class="hero" id="hero">
+  <div class="wall"></div>
+  <div id="frame">
+    <svg id="railsvg" viewBox="0 0 1440 900" aria-hidden="true">
+      <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#F3F1F5"/><stop offset="1" stop-color="#C9C5D0"/></linearGradient></defs>
+      <polygon id="tube" points="250,-55.3 1062,471.6 1065,479 250,-37.3" fill="url(#tg)"/>
+    </svg>
+    <div id="floor"></div>
+    <div id="pieces"></div>
+    <div id="ui">
+      <div id="info">
+        <div class="cnt ln"><span class="sw" id="cnt"></span></div>
+        <h1 class="ttl"><span class="ln"><span class="sw" id="t1"></span></span><span class="ln"><span class="sw" id="t2"></span></span></h1>
+        <div class="rule fade0"></div>
+        <p class="desc"><span class="ln"><span class="sw" id="d1"></span></span><span class="ln"><span class="sw" id="d2"></span></span></p>
+        <ul class="specs">
+          <li class="ln pr"><span><b id="lPrice"></b><em class="sw"><span id="sPrice"></span> <small id="unit"></small></em></span></li>
+          <li class="ln"><span><b id="lSize"></b><em class="sw" id="sSize"></em></span></li>
+          <li class="ln"><span><b id="lColor"></b><em class="sw" id="sColor"></em></span></li>
+          <li class="ln"><span><b id="lMat"></b><em class="sw" id="sMat"></em></span></li>
+        </ul>
+        <button class="vbtn pe fade0" id="viewBtn"><span id="viewTxt"></span><svg viewBox="0 0 10 10"><path d="M9 9L1 1M1 7V1h6"/></svg></button>
+      </div>
+
+      <div id="pager" class="pe fade0">
+        <button id="prevBtn" aria-label="قبلی"><svg viewBox="0 0 36 12"><path d="M36 6H1M6 1L1 6l5 5"/></svg></button>
+        <span class="pcnt" id="pcnt"></span>
+        <button id="nextBtn" aria-label="بعدی"><svg viewBox="0 0 36 12"><path d="M0 6h35M30 1l5 5-5 5"/></svg></button>
+      </div>
+
+      <div id="idx" class="fade0"><div id="iNow"></div><div class="tr"><div class="fl" id="iFill"></div></div><div id="iAll"></div></div>
+      <div id="foot" class="fade0 pe"><span id="footTag"></span> | <a id="footTel" href="#"><bdi dir="ltr"></bdi></a></div>
+      <div id="hint" class="fade0"><span id="hint1"></span><svg viewBox="0 0 20 10"><path d="M1 5h18M4 2L1 5l3 3M16 2l3 3-3 3"/></svg><span id="hint2"></span></div>
+
+      <div id="panel" class="pe">
+        <button class="pback" id="backBtn"><span id="backTxt"></span><svg viewBox="0 0 9 9"><path d="M1 1l7 7M8 1L1 8"/></svg></button>
+        <div class="ptn"><span id="ptName"></span><span id="ptNum"></span></div>
+        <div class="ptabs" id="ptabs"><button></button><button></button><button></button></div>
+        <div id="imgbox"><div class="lay"><div class="in"></div></div><div class="lay"><div class="in"></div></div><div class="lay"><div class="in"></div></div></div>
+        <p class="pcap" id="pcap"></p>
+        <div class="ppr"><b id="ppL"></b><strong id="ppV"></strong><b id="ppU"></b></div>
+        <a class="pcall" id="pcall" href="#"><span>☎</span><bdi dir="ltr"></bdi></a>
+        <div class="ptrack"><i id="pthumb"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mi" id="mi"></div>
+
+<section class="sec" id="price">
+  <h2 id="priceT"></h2><p class="sub" id="priceS"></p><div class="rule2"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="sec" id="about">
+  <h2 id="aboutT"></h2><p class="sub" id="aboutX"></p><div class="rule2"></div>
+  <div class="feats" id="feats"></div>
+</section>
+
+<section class="sec" id="contact">
+  <h2 id="contactT"></h2><p class="sub" id="contactX"></p>
+  <a class="bigtel" id="bigtel" href="#"><bdi dir="ltr"></bdi></a>
+  <div class="crow"><a class="btn fill" id="callBtn" href="#">☎ تماس بگیرید</a><button class="btn" id="copyBtn">کپی شماره</button><a class="btn" id="tgBtn" href="#" target="_blank" rel="noopener" hidden>تلگرام</a></div>
+  <div class="cinfo" id="cinfo"></div>
+</section>
+
+<footer class="fo" id="fo"></footer>
+
+<a class="fab" id="fab" href="#" aria-label="تماس با ما">
+  <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+  <bdi dir="ltr" id="fabTxt"></bdi>
+</a>
+
+<script>
+(function(){
+'use strict';
+/* ====================== داده پیش‌فرض (همان داده‌ی admin.html) ====================== */
+var KEY='delband_shop_v1';
+var DP=[
+[1,'پیراهن','اسموک','پنبهٔ نرم و برسی با دوخت','اسموک دست‌دوز؛ مناسب بازی و خواب.','پنبه ارگانیک','پریوینکل / صورتی / شیری','۲ / ۴ / ۶ سال',320000],
+[2,'پیراهن','موسلین','گاز دولایهٔ سبک با آستین‌های','پروانه‌ای برای روزهای گرم.','موسلین پنبه','سفید شیری','۲ / ۴ / ۶ سال',290000],
+[3,'ژاکت','پوینتل','بافت ظریف پوینتل با دکمه‌های','چوبی؛ سبک و مناسب لایه‌بندی.','بافت پنبه','صورتی کمرنگ','۱ / ۲ / ۴ سال',340000],
+[4,'سارافون','جین','جین شسته و نرم با دامن پرچین','و بندهای قابل تنظیم.','جین پنبه','آبی بنفش','۲ / ۴ / ۶ سال',410000],
+[5,'بلوز','یقه‌چین','پنبهٔ کرینکل با یقهٔ چین‌دار','پهن و آستین‌های پفی.','کرینکل پنبه','طوسی یاسی','۲ / ۴ / ۶ سال',305000],
+[6,'تونیک','برودری','برودری با شانه‌های چین‌دار','و برش گشاد و راحت.','برودری پنبه','سفید شیری','۲ / ۴ / ۶ سال',330000],
+[7,'سارافون','کتان','کتان شسته با بند دکمه‌دار','و دو جیب بزرگ روی دامن.','کتان ۱۰۰٪','صورتی کمرنگ','۲ / ۴ / ۶ سال',360000],
+[8,'پلیور','بافت نرم','بافت پنبه‌ای شبکه‌باز با','یقهٔ گرد و راحت.','بافت پنبه','پریوینکل','۱ / ۲ / ۴ سال',345000],
+[9,'پیراهن','چین‌دار','پنبهٔ پینتاک با شانه‌های','چین‌دار و سر آستین کش.','پنبه ارگانیک','سفید شیری','۲ / ۴ / ۶ سال',315000],
+[10,'سارافون','جیب‌دار','پارچهٔ تویل نرم با بندهای چین‌دار','و جیب برای گنجینه‌های کوچک.','تویل پنبه','طوسی یاسی','۲ / ۴ / ۶ سال',335000],
+[11,'پیراهن','چهارخانه','چهارخانهٔ اسموک با آستین','کوتاه پفی برای روزهای آفتابی.','گینگهم پنبه','صورتی / کرم','۲ / ۴ / ۶ سال',325000],
+[12,'جلیقه','کوئیلت','کوئیلت سبک با دکمه‌های','چوبی؛ گرم و بدون حجم.','کوئیلت پنبه','پریوینکل روشن','۱ / ۲ / ۴ سال',380000]
+];
+var DEF={admin:{password:'1234'},site:{
+brand:'دلبند',nav:['لباس‌ها','لیست قیمت عمده','درباره ما','تماس'],
+hint1:'کلیک برای دیدن',hint2:'کلیک دوباره برای آوردن به جلو',viewBtn:'مشاهده جزئیات',back:'بازگشت به مجموعه',
+tabs:['روی چوب‌لباسی','پارچه','جزئیات'],
+caps:['روی یک چوب‌لباسی چوبی کوچک آویزان است.','لمسی نرم؛ شسته‌شده برای راحتی کودک.','ریزه‌کاری‌هایی که ماندگار دوخته شده‌اند.'],
+lPrice:'قیمت عمده',lSize:'سایزبندی',lColor:'رنگ‌بندی',lMat:'جنس',unit:'تومان',
+footTag:'دلبند · فروش عمدهٔ پوشاک بچه‌گانه',
+priceTitle:'لیست قیمت عمده',priceSub:'همهٔ قیمت‌ها برای فروش عمده و به تومان است. برای ثبت سفارش با ما تماس بگیرید.',
+aboutTitle:'دلبند؛ لباس نرم برای کودکان',
+aboutText:'دلبند مجموعه‌ای از لباس‌های آرام و پاستلی برای کودکان است؛ از پنبهٔ نرم و دوخت‌های ساده که برای بازی، خواب و روزهای آفتابی ساخته شده‌اند.',
+features:[{t:'قیمت عمده',x:'قیمت‌های ویژه برای فروشگاه‌ها و خرده‌فروشان.'},{t:'سایزبندی کامل',x:'سایزهای یک تا شش سال در هر مدل.'},{t:'رنگ‌بندی پاستلی',x:'رنگ‌های آرام و هماهنگ، قابل ست‌شدن با هم.'}],
+contactTitle:'سفارش عمده',contactText:'برای دریافت کاتالوگ کامل و ثبت سفارش، هر زمان با ما تماس بگیرید.',
+phone:'09183749713',telegram:'',address:'',hours:'',footerText:'© تمام حقوق برای دلبند محفوظ است.',
+colors:{wall:'#ECE6EB',ink:'#32333F',muted:'#6A6B80',value:'#7173A6',a1:'#9D9FE4',a2:'#E9ACA9'}},
+products:DP.map(function(r){return{id:'p'+r[0],sprite:r[0],active:true,t1:r[1],t2:r[2],d1:r[3],d2:r[4],material:r[5],colors:r[6],sizes:r[7],price:r[8],images:{}}})};
+
+function load(){
+  try{var r=JSON.parse(localStorage.getItem(KEY));
+    if(r&&r.products&&r.site){r.site=Object.assign({},DEF.site,r.site);r.site.colors=Object.assign({},DEF.site.colors,r.site.colors||{});return r;}
+  }catch(e){}
+  return JSON.parse(JSON.stringify(DEF));
+}
+var DATA=load(),SITE=DATA.site;
+var P=DATA.products.filter(function(p){return p.active!==false}),N=P.length;
+
+/* ====================== ابزار ====================== */
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var fa=function(s){return String(s==null?'':s).replace(/\d/g,function(d){return'۰۱۲۳۴۵۶۷۸۹'[d]})};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var money=function(n){n=Number(n)||0;try{return n.toLocaleString('fa-IR')}catch(e){return fa(n)}};
+var pad=function(n){return fa((n<10?'0':'')+n)};
+var phoneShow=function(p){var d=String(p||'').replace(/\D/g,'');if(d.length===11)d=d.slice(0,4)+' '+d.slice(4,7)+' '+d.slice(7);return fa(d)};
+var phoneTel=function(p){return 'tel:'+String(p||'').replace(/[^\d+]/g,'')};
+var prox=function(u,w){return'https://images.higgs.ai/?default=1&output=webp&url='+encodeURIComponent(u)+'&w='+w+'&q=85'};
+var BASE='https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/';
+var GURL=prox(BASE+'hf_20261113_121624_09fa35c4-680e-46a5-b6a9-8acd429bce67.png',3312);
+var D1URL=prox(BASE+'hf_20261113_121448_68442996-20c3-4f65-8f3d-56d2b6df8152.png',2048);
+var FURL=prox(BASE+'hf_20261113_132947_dc18692c-66e4-447b-a11e-167b3bcadefb.png',3312);
+var TURL=prox(BASE+'hf_20261113_132948_27322be0-e8d1-436a-a229-09ef6371cb98.png',3312);
+/* x,y,w,h,hookX */
+var SPR=[[120,54,560,742,404],[982,56,508,708,1244],[1792,62,558,588,2067],[2638,54,514,726,2893],[110,865,596,652,406],[938,869,610,650,1234],[1844,855,456,718,2067],[2614,861,570,630,2895],[112,1661,592,712,407],[996,1661,492,716,1237],[1832,1663,478,714,2067],[2682,1673,434,630,2894]];
+var FX=[0,836,1668,2506],FW=[805,802,808,805],FY=[0,834,1664],FH=[803,799,815];
+var TX=[0,842,1671,2501],TW=[811,798,799,810],TY=[0,835,1668],TH=[804,800,811];
+var PH='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 700"><path d="M260 10v26" stroke="#bbb" stroke-width="5" fill="none"/><path d="M60 120L260 60l200 60" stroke="#c9a77c" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M110 118h300l40 120-60 20v360H130V258l-60-20z" fill="#d9d8f3" stroke="#b9b8e6" stroke-width="3"/></svg>');
+
+/* رنگ‌ها */
+(function(){var c=SITE.colors,r=document.documentElement.style;r.setProperty('--wall',c.wall);r.setProperty('--ink',c.ink);r.setProperty('--muted',c.muted);r.setProperty('--value',c.value);r.setProperty('--a1',c.a1);r.setProperty('--a2',c.a2)})();
+
+function defOf(p){
+  if(p.images&&p.images.hanger)return{x:0,y:0,w:520,h:700,lo:260,custom:p.images.hanger};
+  var k=p.sprite;
+  if(k>=1&&k<=12){var s=SPR[k-1];return{x:s[0],y:s[1],w:s[2],h:s[3],lo:s[4]-s[0]}}
+  return{x:0,y:0,w:520,h:700,lo:260,custom:PH};
+}
+var defs=P.map(defOf);
+
+/* ====================== هندسهٔ ریل ====================== */
+var HK=[352,440,505,565,620,670,716,758,796,831,863,893];
+var ST=[[352,.94],[435,.905],[545,.83],[670,.70],[778,.57],[878,.445],[958,.33],[1045,.19]];
+var railY=function(x){return 5+.641*(x-330)};
+function hookX(s){
+  if(s<0)return 352+s*120;
+  var t=N<=12?s:s*11/Math.max(1,N-1);
+  var i=Math.min(10,Math.floor(t)),f=t-i;
+  return HK[i]+(HK[i+1]-HK[i])*f;
+}
+function scaleAt(X,sl){
+  if(sl<=.001)return .93;
+  if(X<=ST[0][0])return ST[0][1];
+  for(var i=1;i<ST.length;i++){if(X<=ST[i][0]){var a=ST[i-1],b=ST[i];return a[1]+(b[1]-a[1])*(X-a[0])/(b[0]-a[0])}}
+  return .19;
+}
+
+/* ====================== وضعیت ====================== */
+var cur=0,hover=-1,detail=false,tab=0,following=false,lastStep=0,scale=1,ov={},tm={};
+var mq=matchMedia('(max-width:820px)'),hasHover=matchMedia('(hover:hover)').matches;
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hero=$('#hero'),frame=$('#frame'),piecesEl=$('#pieces'),floor=$('#floor');
+var els=[];
+
+function build(){
+  P.forEach(function(p,i){
+    var d=defs[i],el=document.createElement('div');
+    el.className='piece';
+    el.style.width=d.w+'px';el.style.height=d.h+'px';el.style.transformOrigin=d.lo+'px 0';
+    if(d.custom){el.style.backgroundImage='url("'+d.custom+'")';el.style.backgroundSize='contain';el.style.backgroundPosition='center top'}
+    else{el.style.backgroundImage='url("'+GURL+'")';el.style.backgroundSize='3312px 2480px';el.style.backgroundPosition=(-d.x)+'px '+(-d.y)+'px'}
+    piecesEl.appendChild(el);els.push(el);
+  });
+}
+function slotOf(i){return((i-cur)%N+N)%N}
+function apply(i,sl,op,z){
+  var el=els[i],d=defs[i],X=hookX(sl),S=scaleAt(X,sl),dx=0,dy=0,rot=0,k=1,filt='none';
+  if(detail&&sl>.001){X=352+(X-352)*.36;S=scaleAt(X,sl);op=Math.min(op,.62);filt='blur(7px) saturate(.55) brightness(1.04)'}
+  else if(hover>0&&!detail){if(sl===hover){dx=38*S;dy=6;rot=-6;k=1.035}else if(sl>hover){dx=18*S}}
+  el.style.transform='translate('+(X-d.lo+dx)+'px,'+(railY(X)-9*S+dy)+'px) rotate('+rot+'deg) scale('+(S*k)+')';
+  el.style.opacity=op;el.style.filter=filt;
+  el.style.zIndex=z!=null?z:Math.round(100-sl);
+}
+function layout(){
+  for(var i=0;i<N;i++){
+    var sl=slotOf(i),op=1,o=ov[i],z;
+    if(o){sl=o.slot;op=o.op;z=o.z}
+    apply(i,sl,op,z);
+  }
+  var d=defs[cur];floor.style.top=(railY(352)+d.h*.93-26)+'px';
+}
+function noTrans(i,fn){var el=els[i];el.style.transition='none';fn();void el.offsetWidth;el.style.transition=''}
+
+/* ====================== متن‌ها ====================== */
+function fillText(){
+  var p=P[cur];
+  $('#cnt').textContent=pad(cur+1)+' / '+pad(N);
+  $('#t1').textContent=p.t1||'';$('#t2').textContent=p.t2||'';
+  $('#d1').textContent=p.d1||'';$('#d2').textContent=p.d2||'';
+  $('#sPrice').textContent=money(p.price);
+  $('#sSize').textContent=fa(p.sizes);$('#sColor').textContent=fa(p.colors);$('#sMat').textContent=fa(p.material);
+  $('#pcnt').textContent=pad(cur+1)+' / '+pad(N);
+}
+var swT;
+function swapText(){
+  $$('.sw').forEach(function(e){e.classList.add('out')});
+  clearTimeout(swT);
+  swT=setTimeout(function(){fillText();$$('.sw').forEach(function(e){e.classList.remove('out')})},140);
+}
+function updIndex(){$('#iNow').textContent=pad(cur+1);$('#iFill').style.transform='scaleY('+((cur+1)/N)+')'}
+function afterChange(){
+  swapText();updIndex();
+  if(detail)renderPanel();
+}
+
+/* ====================== پیمایش ====================== */
+function next(){
+  if(N<2)return;
+  var now=performance.now();if(now-lastStep<95)return;lastStep=now;
+  var old=cur;
+  cur=(cur+1)%N;hover=-1;
+  if(ov[cur]){delete ov[cur];clearTimeout(tm[cur])}
+  ov[old]={slot:-1.3,op:0};
+  layout();afterChange();
+  clearTimeout(tm[old]);
+  tm[old]=setTimeout(function(){
+    noTrans(old,function(){ov[old]={slot:slotOf(old),op:0};layout()});
+    requestAnimationFrame(function(){delete ov[old];layout()});
+  },360);
+}
+function prev(){
+  if(N<2)return;
+  var now=performance.now();if(now-lastStep<95)return;lastStep=now;
+  var last=(cur-1+N)%N;
+  hover=-1;
+  if(ov[last]){delete ov[last];clearTimeout(tm[last])}
+  noTrans(last,function(){apply(last,-1.3,0,200)});
+  cur=last;
+  requestAnimationFrame(function(){layout()});
+  afterChange();
+}
+function follow(k){
+  if(k<=0||following)return;
+  following=true;hover=k;layout();
+  setTimeout(function(){
+    for(var j=0;j<k;j++)(function(j){setTimeout(function(){lastStep=0;next()},j*120)})(j);
+    setTimeout(function(){following=false},k*120+300);
+  },260);
+}
+
+/* ====================== هاور و کلیک ====================== */
+function toFrame(e){var r=frame.getBoundingClientRect();return{x:(e.clientX-r.left)/scale,y:(e.clientY-r.top)/scale}}
+function span(s){
+  var i=(cur+s)%N,d=defs[i],X=hookX(s),S=scaleAt(X,s),top=railY(X)-9*S;
+  return{l:X-d.lo*S,r:X+(d.w-d.lo)*S,t:top,b:top+d.h*S};
+}
+function hit(x,y){
+  if(!N)return-1;
+  var f=span(0);
+  if(x>f.l+30&&x<f.r-20&&y>f.t+60&&y<f.b)return 0;
+  if(detail)return-1;
+  for(var s=1;s<N;s++){
+    var a=span(s);
+    if(a.r-6>=x){
+      if(y>a.t+40&&y<a.b-10&&x>f.r-20)return s;
+      return-1;
+    }
+  }
+  return-1;
+}
+function setHover(h){
+  var hv=h>0?h:-1;
+  if(hv!==hover){hover=hv;layout()}
+  hero.style.cursor=h>=0?'pointer':'';
+}
+hero.addEventListener('mousemove',function(e){
+  if(!hasHover||detail||following||mq.matches)return;
+  if(e.target.closest('.pe')){setHover(-1);return}
+  var f=toFrame(e);setHover(hit(f.x,f.y));
+});
+hero.addEventListener('mouseleave',function(){if(!following)setHover(-1)});
+hero.addEventListener('click',function(e){
+  if(e.target.closest('.pe'))return;
+  if(following)return;
+  var f=toFrame(e),h=hit(f.x,f.y);
+  if(h===0)setDetail(!detail);
+  else if(h>0&&!detail)follow(h);
+});
+
+/* چرخ، کلید، لمس */
+var acc=0;
+hero.addEventListener('wheel',function(e){
+  if(mq.matches||window.scrollY>8||!N)return;
+  if(e.target.closest('#panel'))return;
+  var f=toFrame(e);
+  if(f.x>1090&&!detail)return;           /* روی ستون اطلاعات، صفحه عادی اسکرول می‌شود */
+  e.preventDefault();
+  acc+=e.deltaY+e.deltaX;
+  while(acc>=40){acc-=40;next()}
+  while(acc<=-40){acc+=40;prev()}
+},{passive:false});
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight')next();
+  else if(e.key==='ArrowLeft')prev();
+  else if(e.key==='Escape'){setDetail(false);closeMenu()}
+});
+var tx=0,ty=0;
+hero.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+hero.addEventListener('touchend',function(e){
+  var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>36&&Math.abs(dx)>Math.abs(dy)*1.2){dx<0?next():prev()}
+},{passive:true});
+$('#nextBtn').onclick=next;$('#prevBtn').onclick=prev;
+
+/* ====================== نمای جزئیات ====================== */
+var slowT;
+function setDetail(on){
+  if(on===detail||!N)return;
+  detail=on;document.body.classList.toggle('detail',on);
+  frame.classList.add('slow');clearTimeout(slowT);slowT=setTimeout(function(){frame.classList.remove('slow')},760);
+  hover=-1;hero.style.cursor='';
+  if(on){tab=0;renderPanel();if(mq.matches)setTimeout(function(){$('#panel').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})},350)}
+  layout();
+}
+$('#viewBtn').onclick=function(){setDetail(true)};
+$('#backBtn').onclick=function(){setDetail(false)};
+
+var box=$('#imgbox'),lays=$$('.lay',box);
+function reset(inn){inn.removeAttribute('style');inn.className='in';inn.textContent=''}
+function empty(inn){inn.className='in empty';inn.textContent='تصویری ثبت نشده'}
+function contain(inn,url){inn.style.cssText='left:0;top:0;width:100%;height:100%;background:url("'+url+'") center/contain no-repeat'}
+function cover(inn,url,sw,sh,ix,iy,iw,ih,bw,bh){
+  var s=Math.max(bw/iw,bh/ih);
+  inn.style.cssText='left:0;top:0;width:'+bw+'px;height:'+bh+'px;background:url("'+url+'") no-repeat;background-size:'+(sw*s)+'px '+(sh*s)+'px;background-position:'+(bw/2-(ix+iw/2)*s)+'px '+(bh/2-(iy+ih/2)*s)+'px';
+}
+function buildLayers(){
+  var bw=box.clientWidth,bh=box.clientHeight;if(!bw||!bh)return;
+  var p=P[cur],im=p.images||{},k=p.sprite,inn=lays.map(function(l){var n=$('.in',l);reset(n);return n});
+  /* 1 - روی چوب‌لباسی */
+  if(im.hanger)contain(inn[0],im.hanger);
+  else if(k===1){
+    var s=bw/990,h=1007*s;
+    inn[0].style.cssText='left:0;top:'+((bh-h)/2)+'px;width:'+bw+'px;height:'+h+'px;background:url("'+D1URL+'") no-repeat;background-size:'+(2048*s)+'px '+(2048*s)+'px;background-position:'+(bw/2-503.5*s)+'px 0px;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 8%,#000 92%,transparent)';
+  }else if(k>=2&&k<=12){
+    var d=SPR[k-1],w=d[2],hh=d[3],sc=Math.min(.9*bw/w,.88*bh/hh);
+    inn[0].style.cssText='left:'+((bw-w*sc)/2)+'px;top:'+((bh-hh*sc)/2)+'px;width:'+w+'px;height:'+hh+'px;transform-origin:0 0;transform:scale('+sc+');background:url("'+GURL+'") no-repeat;background-size:3312px 2480px;background-position:'+(-d[0])+'px '+(-d[1])+'px';
+  }else empty(inn[0]);
+  /* 2 - پارچه   3 - جزئیات */
+  [['fabric',1,0,1041,FURL,FX,FW,FY,FH],['detail',2,1041,0,TURL,TX,TW,TY,TH]].forEach(function(c,n){
+    var t=inn[c[1]];
+    if(im[c[0]])cover(t,im[c[0]],1,1,0,0,1,1,bw,bh),t.style.backgroundSize='cover',t.style.backgroundPosition='center';
+    else if(k===1)cover(t,D1URL,2048,2048,c[2]+6,c[3]+6,995,995,bw,bh);
+    else if(k>=2&&k<=12){var col=(k-1)%4,row=Math.floor((k-1)/4);cover(t,c[4],3312,2480,c[5][col]+6,c[7][row]+6,c[6][col]-12,c[8][row]-12,bw,bh)}
+    else empty(t);
+  });
+}
+function renderPanel(){
+  var p=P[cur];
+  buildLayers();
+  var names=SITE.tabs;
+  $$('#ptabs button').forEach(function(b,i){b.textContent=pad(i+1)+' / '+names[i];b.classList.toggle('on',i===tab);b.onclick=function(){tab=i;renderPanel()}});
+  lays.forEach(function(l,i){l.classList.toggle('on',i===tab)});
+  $('#ptName').textContent=names[tab];$('#ptNum').textContent=pad(tab+1)+' / '+pad(3);
+  $('#pcap').textContent=SITE.caps[tab]||'';
+  $('#pthumb').style.top=[0,200,400][tab]+'px';
+  $('#ppL').textContent=SITE.lPrice+':';$('#ppV').textContent=money(p.price);$('#ppU').textContent=SITE.unit;
+}
+
+/* ====================== اندازه و چیدمان ====================== */
+var ui=$('#ui'),mi=$('#mi'),movers=[$('#info'),$('#pager'),$('#panel')];
+function placeBlocks(){movers.forEach(function(m){(mq.matches?mi:ui).appendChild(m)})}
+function sizeAll(){
+  var vw=hero.clientWidth,vh=hero.clientHeight;
+  document.documentElement.style.setProperty('--ns',mq.matches?1:Math.max(.62,Math.min(1,window.innerWidth/1440)));
+  if(!mq.matches){
+    scale=Math.min(Math.max(vw/1440,vh/900),vh/870,vw/1380);
+    frame.style.left='50%';frame.style.top='50%';
+    frame.style.transform='translate('+(-720*scale)+'px,'+(-450*scale)+'px) scale('+scale+')';
+  }else{
+    scale=vh/780;
+    var x=Math.min(0,Math.max(vw-1100*scale,(vw-760*scale)/2-40*scale)),y=-vh/2-20*scale;
+    frame.style.left='0';frame.style.top='50%';
+    frame.style.transform='translate('+x+'px,'+y+'px) scale('+scale+')';
+  }
+}
+function onResize(){placeBlocks();sizeAll();if(detail)buildLayers()}
+window.addEventListener('resize',onResize);
+
+/* ====================== منو و تماس ====================== */
+var menu=$('#menuPanel');
+function closeMenu(){menu.classList.remove('open')}
+$('#menuBtn').onclick=function(e){e.stopPropagation();menu.classList.toggle('open')};
+document.addEventListener('click',function(e){if(!e.target.closest('#menuPanel'))closeMenu()});
+
+function buildStatic(){
+  var s=SITE,tel=phoneTel(s.phone),show=phoneShow(s.phone);
+  $('#brand').textContent=s.brand;
+  var ids=['hero','price','about','contact'];
+  $('#links').innerHTML=s.nav.map(function(l,i){return'<a href="#'+ids[i]+'" data-s="'+ids[i]+'"'+(i===0?' class="on"':'')+'>'+esc(l)+'</a>'}).join('');
+  menu.innerHTML=s.nav.map(function(l,i){return'<a href="#'+ids[i]+'">'+esc(l)+'</a>'}).join('')+'<a href="'+tel+'">☎ <bdi dir="ltr">'+show+'</bdi></a>';
+  $$('bdi',$('#navtel')).forEach(function(b){b.textContent=show});$('#navtel').href=tel;
+  $('#hint1').textContent=s.hint1;$('#hint2').textContent=s.hint2;
+  $('#viewTxt').textContent=s.viewBtn;$('#backTxt').textContent=s.back;
+  $('#lPrice').textContent=s.lPrice;$('#lSize').textContent=s.lSize;$('#lColor').textContent=s.lColor;$('#lMat').textContent=s.lMat;$('#unit').textContent=s.unit;
+  $('#footTag').textContent=s.footTag;$('#footTel bdi').textContent=show;$('#footTel').href=tel;
+  $('#pcall bdi').textContent=show;$('#pcall').href=tel;
+  $('#iAll').textContent=pad(N);
+  $('#priceT').textContent=s.priceTitle;$('#priceS').textContent=s.priceSub;
+  $('#aboutT').textContent=s.aboutTitle;$('#aboutX').textContent=s.aboutText;
+  $('#feats').innerHTML=(s.features||[]).map(function(f){return'<div class="feat"><i></i><h3>'+esc(f.t)+'</h3><p>'+esc(f.x)+'</p></div>'}).join('');
+  $('#contactT').textContent=s.contactTitle;$('#contactX').textContent=s.contactText;
+  $('#bigtel bdi').textContent=show;$('#bigtel').href=tel;$('#callBtn').href=tel;
+  var tg=String(s.telegram||'').replace(/^@/,'').trim();
+  if(tg){var b=$('#tgBtn');b.hidden=false;b.href='https://t.me/'+encodeURIComponent(tg)}
+  var ci=[];if(s.address)ci.push(esc(fa(s.address)));if(s.hours)ci.push(esc(fa(s.hours)));
+  $('#cinfo').innerHTML=ci.join('<br>');
+  $('#fo').innerHTML=esc(s.footerText)+'<br>تماس: <a href="'+tel+'"><bdi dir="ltr">'+show+'</bdi></a>';
+  $('#fab').href=tel;$('#fabTxt').textContent=show;
+  $('#copyBtn').onclick=function(){
+    var t=String(s.phone),b=this,done=function(){b.textContent='کپی شد ✓';setTimeout(function(){b.textContent='کپی شماره'},1800)};
+    if(navigator.clipboard)navigator.clipboard.writeText(t).then(done,done);else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()}
+  };
+  /* لیست قیمت */
+  $('#grid').innerHTML=P.map(function(p,i){
+    var d=defs[i],th;
+    if(d.custom)th='<i style="aspect-ratio:1;width:88%;background:url(\''+d.custom+'\') center/contain no-repeat"></i>';
+    else th='<i style="aspect-ratio:'+d.w+'/'+d.h+';background-image:url(\''+GURL+'\');background-size:'+(3312/d.w*100)+'% '+(2480/d.h*100)+'%;background-position:'+(d.x/(3312-d.w)*100)+'% '+(d.y/(2480-d.h)*100)+'%"></i>';
+    var ch=function(t,c){return t?String(t).split('/').map(function(x){return x.trim()}).filter(Boolean).map(function(x){return'<span class="chip'+(c?' c2':'')+'">'+esc(fa(x))+'</span>'}).join(''):''};
+    return'<article class="card" data-i="'+i+'"><div class="th">'+th+'</div><h3>'+esc(p.t1+' '+p.t2)+'</h3>'+
+      '<div class="pr"><small>'+esc(s.lPrice)+'</small><b>'+money(p.price)+'</b><span>'+esc(s.unit)+'</span></div>'+
+      '<div class="chips">'+ch(p.sizes.replace(/سال/,''),0)+'</div><div class="chips">'+ch(p.colors,1)+'</div></article>';
+  }).join('');
+  $$('.card').forEach(function(c){c.onclick=function(){
+    var i=+c.dataset.i;window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+    setDetail(false);
+    setTimeout(function(){var k=(i-cur+N)%N;if(k>0)follow(k)},reduce?0:450);
+  }});
+  /* scroll spy */
+  var secs=ids.map(function(id){return $('#'+id)}),as=$$('#links a');
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+window.innerHeight*.4,on=0;
+    secs.forEach(function(sc,i){if(sc.offsetTop<=y)on=i});
+    as.forEach(function(a,i){a.classList.toggle('on',i===on)});
+  },{passive:true});
+}
+
+/* ====================== انیمیشن ورود ====================== */
+function intro(){
+  var root=document.documentElement;
+  root.classList.remove('pre');
+  if(reduce)return;
+  var E='cubic-bezier(.2,.75,.2,1)';
+  var A=function(el,kf,dur,delay){if(el&&el.animate)el.animate(kf,{duration:dur,delay:delay,easing:E,fill:'backwards'})};
+  A($('#railsvg'),[{opacity:0,clipPath:'inset(-300px 100% -300px -300px)'},{opacity:1,clipPath:'inset(-300px -300px -300px -300px)'}],1000,100);
+  A($('#nav'),[{opacity:0},{opacity:1}],900,200);
+  els.forEach(function(el,i){A(el,[{opacity:0,translate:'0 -14px'},{opacity:1,translate:'0 0'}],900,250+slotOf(i)*35)});
+  $$('#info .ln>span').forEach(function(sp,i){A(sp,[{transform:'translateY(105%)',opacity:0},{transform:'translateY(0)',opacity:1}],1000,650+i*70)});
+  ['#idx','.rule','#viewBtn','#pager','#foot','#hint'].forEach(function(s,i){A($(s),[{opacity:0},{opacity:1}],900,900+i*70)});
+}
+
+/* ====================== شروع ====================== */
+function start(){
+  try{var tg=window.Telegram&&Telegram.WebApp;if(tg){tg.ready();tg.expand()}}catch(e){}
+  buildStatic();
+  if(!N){$('#info').style.display='none';$('#pager').style.display='none';$('#idx').style.display='none';placeBlocks();sizeAll();return}
+  build();placeBlocks();sizeAll();
+  fillText();updIndex();
+  layout();
+  requestAnimationFrame(function(){requestAnimationFrame(intro)});
+  setTimeout(function(){document.documentElement.classList.remove('pre')},4000);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+</script>
+</body>
+</html>
