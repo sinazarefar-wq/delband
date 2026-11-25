@@ -108,7 +108,8 @@ main{max-width:1020px;margin:0 auto;padding:24px 22px 90px}
 .pills{display:flex;gap:6px;flex-wrap:wrap}
 .pills button{padding:6px 14px;border-radius:9px;border:1px solid var(--line);background:#fff;font-size:13px;color:var(--muted)}
 .pills button.on{background:var(--ink);border-color:var(--ink);color:#fff}
-@media(max-width:640px){.row{flex-wrap:wrap}.row .btns{width:100%;justify-content:flex-start}.top,.tabs,main{padding-inline:14px}}
+.ph-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:#FAF8F6;margin-bottom:10px}
+@media(max-width:640px){.row{flex-wrap:wrap}.row .btns{width:100%;justify-content:flex-start}.top,.tabs,main{padding-inline:14px}.ph-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -208,7 +209,9 @@ var DEF={
     aboutText:'دلبند مجموعه‌ای از لباس‌های آرام و پاستلی برای کودکان است؛ از پنبهٔ نرم و دوخت‌های ساده که برای بازی، خواب و روزهای آفتابی ساخته شده‌اند.',
     features:[{t:'قیمت عمده',x:'قیمت‌های ویژه برای فروشگاه‌ها و خرده‌فروشان.'},{t:'سایزبندی کامل',x:'سایزهای یک تا شش سال در هر مدل.'},{t:'رنگ‌بندی پاستلی',x:'رنگ‌های آرام و هماهنگ، قابل ست‌شدن با هم.'}],
     contactTitle:'سفارش عمده',contactText:'برای دریافت کاتالوگ کامل و ثبت سفارش، هر زمان با ما تماس بگیرید.',
-    phone:'09183749713',telegram:'',tgChannel:'',tgAdmin:'',address:'',hours:'',
+    phone:'09183749713',
+    phones:[{label:'سفارش و پشتیبانی',number:'09183749713'}],
+    telegram:'',tgChannel:'',tgAdmin:'',address:'',hours:'',
     footerText:'© تمام حقوق برای دلبند محفوظ است.',
     colors:{wall:'#ECE6EB',ink:'#2F2B30',muted:'#6E6770',value:'#558E97',brand:'#67A6B0',paper:'#FAF8F6',card:'#FFFFFF',line:'#E5DFE3',a1:'#9D9FE4',a2:'#E9ACA9'}
   },
@@ -233,7 +236,6 @@ var DEF={
   }).concat(makeDefaultPants())
 };
 
-/* ۸ تم رنگی کاملاً متفاوت */
 var THEMES=[
   {n:'دلبند اصلی (پاستلی)',c:{wall:'#ECE6EB',ink:'#2F2B30',muted:'#6E6770',value:'#558E97',brand:'#67A6B0',paper:'#FAF8F6',card:'#FFFFFF',line:'#E5DFE3',a1:'#9D9FE4',a2:'#E9ACA9'}},
   {n:'مینیمال لوکس (سفید و طلایی)',c:{wall:'#F6F4F0',ink:'#1E1D1B',muted:'#726D65',value:'#9C7A3C',brand:'#C5A059',paper:'#FDFCF9',card:'#FFFFFF',line:'#E6E0D6',a1:'#C5A059',a2:'#DFC89B'}},
@@ -279,6 +281,9 @@ function migrate(r){
   r.site=Object.assign({},DEF.site,r.site||{});
   r.site.colors=Object.assign({},DEF.site.colors,r.site.colors||{});
   if(!r.site.tgAdmin&&r.site.telegram)r.site.tgAdmin=r.site.telegram;
+  if(!Array.isArray(r.site.phones)||!r.site.phones.length){
+    r.site.phones=[{label:'سفارش و پشتیبانی',number:r.site.phone||DEF.site.phone}];
+  }
   if(!Array.isArray(r.racks)||!r.racks.length)r.racks=JSON.parse(JSON.stringify(DEF.racks));
   if(!Array.isArray(r.promos)){
     if(r.promo)r.promos=[Object.assign({id:'pr1'},DEF.promos[0],r.promo)];
@@ -324,7 +329,7 @@ function save(){
 }
 function publicPayload(){
   var copy=JSON.parse(JSON.stringify(D));
-  delete copy.admin; /* رمز مدیریت هرگز در data.json عمومی منتشر نمی‌شود */
+  delete copy.admin;
   return JSON.stringify(copy);
 }
 var tt;
@@ -537,7 +542,7 @@ function saveForm(){
 }
 $('#modal').onclick=function(e){if(e.target===this)closeForm()};
 
-/* ---------- افزودن اسلایدر جشنواره (قابل صدا زدن از هر دو تب) ---------- */
+/* ---------- افزودن اسلایدر جشنواره ---------- */
 function addNewPromo(switchToTab){
   var id='pr'+Date.now();
   var np={id:id,active:true,title:'جشنواره جدید '+(D.promos.length+1),subtitle:'تخفیف‌های ویژه دلبند',badge:'پیشنهاد ویژه',btnText:'مشاهده همه',bg:'#558E97',bg2:'#3E7078',textColor:'#FFFFFF',cardBg:'#FFFFFF',source:'all',productIds:[]};
@@ -724,16 +729,64 @@ function renderTexts(){
   $('#def_logo').onclick=function(){D.site.logo='logo.png';if(save()){paintLogo();toast('لوگوی پیش‌فرض تنظیم شد.')}};
   $('#rm_logo').onclick=function(){D.site.logo='';if(save()){paintLogo();toast('لوگو حذف شد.')}};
 }
+
+/* ---------- تماس، شماره‌های نامحدود و فوتر ---------- */
 function renderContact(){
-  $('#p-contact').innerHTML=
-    form('اطلاعات تماس، تلگرام و فوتر',[
-      ['phone','شمارهٔ تماس (برای دکمه تماس شناور و فوتر)','ltr'],
+  var pane=$('#p-contact');
+  if(!Array.isArray(D.site.phones)||!D.site.phones.length)D.site.phones=[{label:'سفارش و پشتیبانی',number:D.site.phone||''}];
+
+  var phCard='<div class="card"><div class="bar" style="margin:0 0 12px;justify-content:space-between"><h2 style="margin:0">شماره‌های تماس (نامحدود)</h2>'+
+    '<button type="button" class="btn sm fill" id="addPh">+ افزودن شماره تماس جدید</button></div>'+
+    '<p class="note" style="margin:0 0 14px">شماره اول به عنوان شماره اصلی در هدر نمایش داده می‌شود. در صورت ثبت بیش از یک شماره، با کلیک روی دکمه تماس لیست همه شماره‌ها برای انتخاب مشتری باز می‌شود.</p>'+
+    '<div id="phList">'+
+      D.site.phones.map(function(ph,i){
+        return'<div class="ph-row" data-pi="'+i+'">'+
+          '<div class="f"><label>عنوان (مثلاً: سفارش عمده، ثابت مغازه، مدیریت)</label><input type="text" data-pl value="'+esc(ph.label||'')+'" placeholder="عنوان شماره"></div>'+
+          '<div class="f"><label>شماره تماس</label><input type="tel" data-pn value="'+esc(ph.number||'')+'" placeholder="مثلاً: 09183749713" style="direction:ltr;text-align:left"></div>'+
+          '<div class="bar" style="margin:18px 0 0;gap:5px">'+
+            '<button type="button" class="btn sm" data-pa="up" title="بالا">↑</button>'+
+            '<button type="button" class="btn sm" data-pa="dn" title="پایین">↓</button>'+
+            (D.site.phones.length>1?'<button type="button" class="btn sm danger" data-pa="del">حذف</button>':'')+
+          '</div></div>';
+      }).join('')+
+    '</div></div>';
+
+  pane.innerHTML=phCard+
+    form('تلگرام، آدرس و فوتر',[
       ['tgChannel','آیدی کانال تلگرام (بدون @)','ltr'],
       ['tgAdmin','آیدی ادمین در تلگرام (بدون @)','ltr'],
       ['hours','ساعت کاری (در فوتر نمایش داده می‌شود)'],
       ['address','آدرس فروشگاه (در فوتر نمایش داده می‌شود)','area'],
       ['footerText','متن کپی‌رایت پایین فوتر']
-    ])+'<button class="btn fill" data-save="p-contact">ذخیره اطلاعات تماس و فوتر</button>';
+    ])+'<button class="btn fill" id="saveContact">ذخیره اطلاعات تماس و فوتر</button>';
+
+  function syncPhonesFromDOM(){
+    D.site.phones=$$('.ph-row','#phList').map(function(row){
+      return{label:$('[data-pl]',row).value.trim(),number:$('[data-pn]',row).value.trim()};
+    });
+  }
+  $('#addPh').onclick=function(){
+    syncPhonesFromDOM();
+    D.site.phones.push({label:'',number:''});
+    renderContact();
+  };
+  $('#phList').onclick=function(e){
+    var b=e.target.closest('[data-pa]');if(!b)return;
+    syncPhonesFromDOM();
+    var i=+b.closest('.ph-row').dataset.pi,a=b.dataset.pa,A=D.site.phones;
+    if(a==='up'&&i>0){var t=A[i];A[i]=A[i-1];A[i-1]=t;renderContact()}
+    if(a==='dn'&&i<A.length-1){var t2=A[i];A[i]=A[i+1];A[i+1]=t2;renderContact()}
+    if(a==='del'&&A.length>1){A.splice(i,1);renderContact()}
+  };
+  $('#saveContact').onclick=function(){
+    syncPhonesFromDOM();
+    var clean=D.site.phones.filter(function(x){return x.number});
+    if(!clean.length)return toast('حداقل یک شماره تماس لازم است.',true);
+    D.site.phones=clean;
+    D.site.phone=clean[0].number;
+    $$('[data-p]',pane).forEach(function(i){setP(D.site,i.dataset.p,i.value.trim())});
+    if(save()){renderContact();toast('اطلاعات تماس و فوتر ذخیره شد.')}
+  };
 }
 
 /* ---------- تم‌های آماده و رنگ‌ها ---------- */
