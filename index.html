@@ -938,10 +938,8 @@ function createRackSection(rackCfg,isFirst){
     var sp0=span(0),spL=span(N-1);
     var minX=sp0.l+15,maxX=Math.min(1040,Math.max(sp0.r,spL.r));
     if(f.x<minX||f.x>maxX||f.y<sp0.t||f.y>sp0.b)return;
-    var allowY=(isFirst&&window.scrollY<=8);
-    if(!allowY&&Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;
     e.preventDefault();
-    acc+=(allowY?e.deltaY:0)+e.deltaX;
+    acc+=e.deltaY+e.deltaX;
     while(acc>=40){acc-=40;next()}
     while(acc<=-40){acc+=40;prev()}
   },{passive:false});
