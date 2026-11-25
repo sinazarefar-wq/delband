@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
 <script>(function(){if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('pre')})()</script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js" defer></script>
 <style>
 @font-face {
   font-family: 'YekanBakh';
@@ -1394,10 +1394,13 @@ function start(){
     }
   }catch(e){}
   if(location.search.indexOf('preview=1')>=0){boot(loadLocal());return}
+  var done=false;
+  var finish=function(d){if(done)return;done=true;boot(d)};
+  var timer=setTimeout(function(){finish(loadLocal())},5000);
   fetch('data.json?v='+Date.now(),{cache:'no-store'})
     .then(function(res){if(!res.ok)throw 0;return res.json()})
-    .then(function(remote){boot(migrate(remote))})
-    .catch(function(){boot(loadLocal())});
+    .then(function(remote){clearTimeout(timer);finish(migrate(remote))})
+    .catch(function(){clearTimeout(timer);finish(loadLocal())});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
