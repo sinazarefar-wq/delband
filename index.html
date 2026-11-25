@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
 <script>(function(){if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('pre')})()</script>
-<script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+<script src="https://telegram.org/js/telegram-web-app.js" async></script>
 <style>
 @font-face {
   font-family: 'YekanBakh';
@@ -1402,7 +1402,7 @@ function start(){
     .then(function(remote){clearTimeout(timer);finish(migrate(remote))})
     .catch(function(){clearTimeout(timer);finish(loadLocal())});
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+start();
 })();
 </script>
 </body>
