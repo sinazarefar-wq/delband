@@ -88,7 +88,7 @@ ul{list-style:none}
 #menuPanel a{display:block;padding:10px 14px;font-size:14.5px;font-weight:500;border-radius:8px;color:var(--ink)}
 #menuPanel a:hover{background:var(--paper);color:var(--value)}
 
-#mainSections{padding-top:68px}
+#mainSections{padding-top:68px;min-height:100vh}
 
 /* ---------- rack screens ---------- */
 .screen{display:block;position:relative;z-index:1;border-bottom:1px solid var(--line)}
@@ -1395,12 +1395,23 @@ function start(){
   }catch(e){}
   if(location.search.indexOf('preview=1')>=0){boot(loadLocal());return}
   var done=false;
-  var finish=function(d){if(done)return;done=true;boot(d)};
-  var timer=setTimeout(function(){finish(loadLocal())},5000);
+  var finish=function(d,isRemote){
+    if(done)return;
+    try{
+      boot(d);
+      done=true;
+      if(isRemote){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(_){}}
+    }catch(err){
+      $('#mainSections').innerHTML='';
+      RACKS={};RACK_LIST=[];NAV_ITEMS=[];
+      if(isRemote){done=true;boot(loadLocal())}
+    }
+  };
+  var timer=setTimeout(function(){finish(loadLocal(),false)},3000);
   fetch('data.json?v='+Date.now(),{cache:'no-store'})
     .then(function(res){if(!res.ok)throw 0;return res.json()})
-    .then(function(remote){clearTimeout(timer);finish(migrate(remote))})
-    .catch(function(){clearTimeout(timer);finish(loadLocal())});
+    .then(function(remote){clearTimeout(timer);finish(migrate(remote),true)})
+    .catch(function(){clearTimeout(timer);finish(loadLocal(),false)});
 }
 start();
 })();
