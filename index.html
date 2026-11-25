@@ -196,7 +196,7 @@ linear-gradient(90deg,color-mix(in srgb,var(--rw,var(--wall)) 92%,#000) 0%,color
 .ptabs button.on::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;background:var(--brand)}
 .imgbox{top:96px;left:0;right:0;height:490px;background:var(--paper);border-radius:12px;overflow:hidden;border:1px solid var(--line);cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y}
 
-/* ---------- اسلایدر کشویی جشنواره (بهینه برای مینی‌اپ تلگرام + SVG فلش ثابت) ---------- */
+/* ---------- اسلایدر کشویی جشنواره ---------- */
 .promo-sec{padding:36px 6vw;position:relative;z-index:2;background:var(--paper)}
 .promo-box{
   position:relative;border-radius:18px;padding:22px 20px;
@@ -302,7 +302,13 @@ section.sec{padding:86px 8vw;position:relative;z-index:2}
 #contact{background:color-mix(in srgb,var(--wall) 92%,#000);text-align:center}
 #contact .sub{margin-inline:auto}
 .bigtel{display:inline-block;margin-top:28px;font-size:clamp(28px,5vw,44px);font-weight:500;letter-spacing:.04em;direction:ltr;border-bottom:2px solid var(--brand);padding-bottom:6px;color:var(--ink)}
-.crow{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.phone-cards{margin:28px auto 0;max-width:780px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.ph-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.ph-card .ph-lbl{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:4px}
+.ph-card .ph-num{display:block;font-size:22px;font-weight:700;letter-spacing:.04em;direction:ltr;color:var(--ink);margin-bottom:12px}
+.ph-card .ph-acts{display:flex;gap:8px;justify-content:center}
+.ph-card .btn{padding:6px 14px;font-size:13.5px}
+.crow{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:10px;border:1px solid var(--ink);font-size:15px;font-weight:500;transition:background .25s,color .25s,border-color .25s}
 .btn:hover,.btn.fill{background:var(--value);border-color:var(--value);color:#fff}
 .btn.fill:hover{background:var(--brand);border-color:var(--brand)}
@@ -318,6 +324,9 @@ footer.fo{background:#222026;color:#EDE8EC;padding:48px 8vw 86px;position:relati
 .fo-card h4{font-size:13px;font-weight:500;color:#B8B0B6;margin-bottom:4px}
 .fo-card p,.fo-card a{font-size:14.5px;font-weight:500;color:#fff;line-height:1.6;word-break:break-word}
 .fo-card a:hover{color:#9AD2DB}
+.fo-ph-list{display:flex;flex-direction:column;gap:6px}
+.fo-ph-item{display:flex;flex-direction:column;line-height:1.4}
+.fo-ph-item small{font-size:11.5px;color:#B8B0B6}
 .fo-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:13px;color:#A8A0A6;max-width:1100px;margin:0 auto}
 
 /* دکمه تماس شناور زیبا (بدون نمایش شماره) */
@@ -334,16 +343,20 @@ footer.fo{background:#222026;color:#EDE8EC;padding:48px 8vw 86px;position:relati
 .fab svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;position:relative;z-index:1}
 @keyframes fabp{0%{transform:scale(.95);opacity:.55}70%{transform:scale(1.22);opacity:0}100%{transform:scale(1.22);opacity:0}}
 
-/* مودال تماس مخصوص مینی‌اپ تلگرام */
+/* مودال تماس چندشماره‌ای (سازگار با مینی‌اپ تلگرام و سایت) */
 #callModal{position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.52);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
 #callModal.open{opacity:1;visibility:visible;transition-delay:0s}
-.cbox{width:100%;max-width:350px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;padding:24px 22px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.3);direction:rtl}
-.cbox h3{font-size:18px;font-weight:700;margin-bottom:6px}
-.cbox .cnum{display:block;font-size:26px;font-weight:700;letter-spacing:.04em;direction:ltr;color:var(--value);margin:10px 0 18px;padding:10px;border-radius:12px;background:var(--paper);border:1px solid var(--line)}
-.cbox .cbtns{display:grid;gap:9px}
-.cbox .cbtn{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:10px;font-size:14.5px;font-weight:500;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.cbox{width:100%;max-width:390px;max-height:86vh;overflow-y:auto;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;padding:22px 20px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.3);direction:rtl}
+.cbox h3{font-size:18px;font-weight:700;margin-bottom:14px}
+.clist{display:grid;gap:10px;margin-bottom:12px}
+.citem{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:12px 14px;text-align:right}
+.citem-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.citem-lbl{font-size:13px;font-weight:500;color:var(--muted)}
+.citem-num{font-size:18px;font-weight:700;letter-spacing:.03em;direction:ltr;color:var(--value)}
+.citem-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cbox .cbtn{display:flex;align-items:center;justify-content:center;gap:6px;height:40px;border-radius:9px;font-size:13.5px;font-weight:500;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .cbox .cbtn.primary{background:var(--value);border-color:var(--value);color:#fff}
-.cbox .cclose{margin-top:12px;font-size:13.5px;color:var(--muted);padding:6px 14px}
+.cbox .cclose{margin-top:10px;font-size:13.5px;color:var(--muted);padding:6px 14px}
 
 #toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%) translateY(16px);z-index:1200;background:#222026;color:#fff;padding:9px 20px;border-radius:99px;font-size:13.5px;opacity:0;pointer-events:none;transition:.3s;white-space:nowrap}
 #toast.on{opacity:1;transform:translateX(-50%)}
@@ -491,16 +504,12 @@ html.pre #mainSections>.screen:first-child .ln>span{transform:translateY(105%);o
   <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
 </a>
 
-<!-- مودال تماس سازگار با مینی‌اپ تلگرام -->
+<!-- مودال تماس چندشماره‌ای -->
 <div id="callModal" role="dialog" aria-modal="true">
   <div class="cbox">
-    <h3>تماس با دلبند</h3>
-    <span class="cnum" id="cmNum"></span>
-    <div class="cbtns">
-      <button type="button" class="cbtn primary" id="cmCopy">کپی شماره تماس</button>
-      <a class="cbtn" id="cmTg" href="#" hidden>پیام به ادمین در تلگرام</a>
-      <a class="cbtn" id="cmDial" href="#">تماس مستقیم با شماره‌گیر</a>
-    </div>
+    <h3>شماره‌های تماس دلبند</h3>
+    <div class="clist" id="cmList"></div>
+    <a class="cbtn" id="cmTg" href="#" hidden style="width:100%">پیام به ادمین در تلگرام</a>
     <button type="button" class="cclose" id="cmClose">بستن</button>
   </div>
 </div>
@@ -553,7 +562,9 @@ var DEF={
     aboutText:'دلبند مجموعه‌ای از لباس‌های آرام و پاستلی برای کودکان است؛ از پنبهٔ نرم و دوخت‌های ساده که برای بازی، خواب و روزهای آفتابی ساخته شده‌اند.',
     features:[{t:'قیمت عمده',x:'قیمت‌های ویژه برای فروشگاه‌ها و خرده‌فروشان.'},{t:'سایزبندی کامل',x:'سایزهای یک تا شش سال در هر مدل.'},{t:'رنگ‌بندی پاستلی',x:'رنگ‌های آرام و هماهنگ، قابل ست‌شدن با هم.'}],
     contactTitle:'سفارش عمده',contactText:'برای دریافت کاتالوگ کامل و ثبت سفارش، هر زمان با ما تماس بگیرید.',
-    phone:'09183749713',telegram:'',tgChannel:'',tgAdmin:'',address:'',hours:'',
+    phone:'09183749713',
+    phones:[{label:'سفارش و پشتیبانی',number:'09183749713'}],
+    telegram:'',tgChannel:'',tgAdmin:'',address:'',hours:'',
     footerText:'© تمام حقوق برای دلبند محفوظ است.',
     colors:{wall:'#ECE6EB',ink:'#2F2B30',muted:'#6E6770',value:'#558E97',brand:'#67A6B0',paper:'#FAF8F6',card:'#FFFFFF',line:'#E5DFE3',a1:'#9D9FE4',a2:'#E9ACA9'}
   },
@@ -582,6 +593,13 @@ function migrate(r){
   r.site=Object.assign({},DEF.site,r.site||{});
   r.site.colors=Object.assign({},DEF.site.colors,r.site.colors||{});
   if(!r.site.tgAdmin&&r.site.telegram)r.site.tgAdmin=r.site.telegram;
+  if(!Array.isArray(r.site.phones)||!r.site.phones.length){
+    r.site.phones=[{label:'سفارش و پشتیبانی',number:r.site.phone||DEF.site.phone}];
+  }
+  r.site.phones=r.site.phones.filter(function(x){return x&&String(x.number||'').trim()});
+  if(!r.site.phones.length)r.site.phones=[{label:'تماس',number:r.site.phone||DEF.site.phone}];
+  r.site.phone=r.site.phones[0].number;
+
   if(!Array.isArray(r.racks)||!r.racks.length)r.racks=JSON.parse(JSON.stringify(DEF.racks));
   if(!Array.isArray(r.promos)){
     if(r.promo)r.promos=[Object.assign({id:'pr1'},DEF.promos[0],r.promo)];
@@ -620,11 +638,18 @@ function loadLocal(){
 var $=function(s,r){r=typeof r==='string'?document.querySelector(r):r;return(r||document).querySelector(s)};
 var $$=function(s,r){r=typeof r==='string'?document.querySelector(r):r;return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var fa=function(s){return String(s==null?'':s).replace(/\d/g,function(d){return'۰۱۲۳۴۵۶۷۸۹'[d]})};
+var toEn=function(s){return String(s==null?'':s).replace(/[۰-۹]/g,function(d){return'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).replace(/[٠-٩]/g,function(d){return'٠١٢٣٤٥٦٧٨٩'.indexOf(d)})};
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
 var money=function(n){n=Number(n)||0;try{return n.toLocaleString('fa-IR')}catch(e){return fa(n)}};
 var pad=function(n){return fa((n<10?'0':'')+n)};
-var phoneShow=function(p){var d=String(p||'').replace(/\D/g,'');if(d.length===11)d=d.slice(0,4)+' '+d.slice(4,7)+' '+d.slice(7);return fa(d)};
-var phoneTel=function(p){return 'tel:'+String(p||'').replace(/[^\d+]/g,'')};
+var phoneShow=function(p){
+  var d=toEn(p).replace(/\D/g,'');
+  if(d.length===11&&d.indexOf('09')===0)return fa(d.slice(0,4)+' '+d.slice(4,7)+' '+d.slice(7));
+  if(d.length===11&&d.indexOf('0')===0)return fa(d.slice(0,3)+' '+d.slice(3,7)+' '+d.slice(7));
+  if(d.length===8)return fa(d.slice(0,4)+' '+d.slice(4));
+  return fa(String(p||'').trim());
+};
+var phoneTel=function(p){return 'tel:'+toEn(p).replace(/[^\d+]/g,'')};
 var finalPrice=function(p){var pr=Number(p.price)||0;return(p.discountOn&&p.discountPct>0)?Math.round(pr*(100-Math.min(99,p.discountPct))/100):pr};
 var prox=function(u,w){return'https://images.higgs.ai/?default=1&output=webp&url='+encodeURIComponent(u)+'&w='+w+'&q=85'};
 var BASE='https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/';
@@ -655,9 +680,10 @@ var IN_TG=Boolean(TG&&TG.platform&&TG.platform!=='unknown');
 var toastT;
 function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},2200)}
 function copyText(txt,cb){
+  var clean=toEn(txt).replace(/[^\d+]/g,'')||String(txt);
   var done=function(){toast('شماره کپی شد ✓');if(cb)cb()};
-  function fb(){var a=document.createElement('textarea');a.value=txt;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()}
-  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done,fb);else fb();
+  function fb(){var a=document.createElement('textarea');a.value=clean;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(clean).then(done,fb);else fb();
 }
 function openTgLink(url,e){
   if(IN_TG&&TG.openTelegramLink){if(e)e.preventDefault();try{TG.openTelegramLink(url);return}catch(_){}}
@@ -673,17 +699,18 @@ function closeCallModal(){
 $('#cmClose').onclick=closeCallModal;
 $('#callModal').onclick=function(e){if(e.target===this)closeCallModal()};
 
-var DATA,SITE;
+var DATA,SITE,PHONES=[];
 var mq=matchMedia('(max-width:820px)'),hasHover=matchMedia('(hover:hover)').matches;
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var RACKS={},RACK_LIST=[],NAV_ITEMS=[];
 
 function closeAllDetails(except){RACK_LIST.forEach(function(rk){if(rk!==except)rk.setDetail(false)})}
-function bindTelEl(el){
+function bindTelEl(el,specificNum){
   if(!el)return;
-  el.href=phoneTel(SITE.phone);
+  var num=specificNum||(PHONES[0]?PHONES[0].number:SITE.phone);
+  el.href=phoneTel(num);
   el.onclick=function(e){
-    if(IN_TG){e.preventDefault();openCallModal()}
+    if(IN_TG||(!specificNum&&PHONES.length>1)){e.preventDefault();openCallModal()}
   };
 }
 
@@ -1041,7 +1068,7 @@ function createRackSection(rackCfg,isFirst){
   function onResize(){placeBlocks();sizeAll(false);layout();if(detail)buildLayers()}
   if(window.ResizeObserver)new ResizeObserver(function(){sizeAll(false)}).observe(hero);
 
-  var show=phoneShow(SITE.phone);
+  var show=phoneShow(PHONES[0].number);
   $('.hint1',wrap).textContent=SITE.hint1;$('.hint2',wrap).textContent=SITE.hint2;
   $('.viewTxt',wrap).textContent=SITE.viewBtn;
   $('.lPrice',wrap).textContent=SITE.lPrice;$('.lSize',wrap).textContent=SITE.lSize;$('.lColor',wrap).textContent=SITE.lColor;$('.lMat',wrap).textContent=SITE.lMat;$('.unit',wrap).textContent=SITE.unit;
@@ -1105,7 +1132,6 @@ function createPromoSection(pr){
   $('.pnav.pr',sec).onclick=function(){rail.scrollBy({left:240,behavior:'smooth'})};
   $('.pnav.pl',sec).onclick=function(){rail.scrollBy({left:-240,behavior:'smooth'})};
 
-  /* درگ با کلیک چپ موس */
   var down=false,sx=0,sl0=0,dragged=false;
   rail.addEventListener('dragstart',function(e){e.preventDefault()});
   rail.addEventListener('mousedown',function(e){
@@ -1181,28 +1207,42 @@ function createAboutSection(){
   NAV_ITEMS.push({id:'about',label:'درباره ما'});
 }
 
-/* ====================== تماس ====================== */
+/* ====================== تماس (چندشماره‌ای) ====================== */
 function createContactSection(){
-  var s=SITE,show=phoneShow(s.phone);
+  var s=SITE;
   var sec=document.createElement('section');
   sec.className='sec';sec.id='contact';
   var tgA=String(s.tgAdmin||s.telegram||'').replace(/^@/,'').trim();
   var tgUrl='https://t.me/'+encodeURIComponent(tgA);
   var ci=[];if(s.address)ci.push(esc(fa(s.address)));if(s.hours)ci.push(esc(fa(s.hours)));
-  sec.innerHTML=
-    '<h2>'+esc(s.contactTitle)+'</h2><p class="sub">'+esc(s.contactText)+'</p>'+
-    '<a class="bigtel" href="#"><bdi dir="ltr">'+show+'</bdi></a>'+
-    '<div class="crow"><a class="btn fill callBtn" href="#">☎ تماس بگیرید</a><button class="btn copyBtn">کپی شماره</button>'+
-    (tgA?'<a class="btn tgBtn" href="'+tgUrl+'" target="_blank" rel="noopener">پیام در تلگرام</a>':'')+
-    '</div><div class="cinfo">'+ci.join('<br>')+'</div>';
+
+  var phHtml='';
+  if(PHONES.length===1){
+    var p0=PHONES[0];
+    phHtml='<a class="bigtel" data-num="'+esc(p0.number)+'" href="#"><bdi dir="ltr">'+phoneShow(p0.number)+'</bdi></a>'+
+      '<div class="crow"><a class="btn fill callBtn" data-num="'+esc(p0.number)+'" href="#">☎ تماس بگیرید</a>'+
+      '<button class="btn copyBtn" data-num="'+esc(p0.number)+'">کپی شماره</button>'+
+      (tgA?'<a class="btn tgBtn" href="'+tgUrl+'" target="_blank" rel="noopener">پیام در تلگرام</a>':'')+'</div>';
+  }else{
+    phHtml='<div class="phone-cards">'+PHONES.map(function(p){
+      return'<div class="ph-card">'+(p.label?'<span class="ph-lbl">'+esc(p.label)+'</span>':'')+
+        '<span class="ph-num">'+phoneShow(p.number)+'</span>'+
+        '<div class="ph-acts"><a class="btn fill callBtn" data-num="'+esc(p.number)+'" href="#">☎ تماس</a>'+
+        '<button class="btn copyBtn" data-num="'+esc(p.number)+'">کپی</button></div></div>';
+    }).join('')+'</div>'+
+    (tgA?'<div class="crow"><a class="btn tgBtn" href="'+tgUrl+'" target="_blank" rel="noopener">پیام در تلگرام</a></div>':'');
+  }
+
+  sec.innerHTML='<h2>'+esc(s.contactTitle)+'</h2><p class="sub">'+esc(s.contactText)+'</p>'+phHtml+'<div class="cinfo">'+ci.join('<br>')+'</div>';
   $('#mainSections').appendChild(sec);
   NAV_ITEMS.push({id:'contact',label:'تماس'});
-  bindTelEl($('.bigtel',sec));
-  bindTelEl($('.callBtn',sec));
+
+  $$('.bigtel,.callBtn',sec).forEach(function(a){bindTelEl(a,a.dataset.num)});
+  $$('.copyBtn',sec).forEach(function(b){b.onclick=function(){
+    var orig=b.textContent;
+    copyText(b.dataset.num,function(){b.textContent='کپی شد ✓';setTimeout(function(){b.textContent=orig},1800)});
+  }});
   var tb=$('.tgBtn',sec);if(tb)tb.onclick=function(e){openTgLink(tgUrl,e)};
-  $('.copyBtn',sec).onclick=function(){
-    var b=this;copyText(String(s.phone),function(){b.textContent='کپی شد ✓';setTimeout(function(){b.textContent='کپی شماره'},1800)});
-  };
 }
 
 function jumpToProduct(rid,pid){
@@ -1220,23 +1260,28 @@ $('#menuBtn').onclick=function(e){e.stopPropagation();menu.classList.toggle('ope
 document.addEventListener('click',function(e){if(!e.target.closest('#menuPanel'))closeMenu()});
 
 function buildHeaderAndFooter(){
-  var s=SITE,tel=phoneTel(s.phone),show=phoneShow(s.phone);
+  var s=SITE,p0=PHONES[0],show0=phoneShow(p0.number);
   var br=$('#brand');
   if(s.logo)br.innerHTML='<img src="'+esc(s.logo)+'" alt="'+esc(s.brand)+'" onerror="this.parentNode.textContent=this.alt">';
   else br.textContent=s.brand;
   br.onclick=function(e){e.preventDefault();window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})};
 
   $('#links').innerHTML=NAV_ITEMS.map(function(n,i){return'<a href="#'+n.id+'" data-s="'+n.id+'"'+(i===0?' class="on"':'')+'>'+esc(n.label)+'</a>'}).join('');
-  menu.innerHTML=NAV_ITEMS.map(function(n){return'<a href="#'+n.id+'">'+esc(n.label)+'</a>'}).join('')+'<a href="'+tel+'" class="mtel">☎ <bdi dir="ltr">'+show+'</bdi></a>';
+  menu.innerHTML=NAV_ITEMS.map(function(n){return'<a href="#'+n.id+'">'+esc(n.label)+'</a>'}).join('')+
+    '<a href="#" class="mtel">☎ <bdi dir="ltr">'+show0+'</bdi>'+(PHONES.length>1?' ('+fa(PHONES.length)+' شماره)':'')+'</a>';
   bindTelEl($('.mtel',menu));
-  $$('bdi',$('#navtel')).forEach(function(b){b.textContent=show});
+  $$('bdi',$('#navtel')).forEach(function(b){b.textContent=show0});
   bindTelEl($('#navtel'));
   bindTelEl($('#fab'));
 
-  /* تنظیم مودال تماس مینی‌اپ */
-  $('#cmNum').textContent=show;
-  $('#cmDial').href=tel;
-  $('#cmCopy').onclick=function(){copyText(String(s.phone))};
+  /* ساخت لیست شماره‌ها داخل مودال تماس */
+  $('#cmList').innerHTML=PHONES.map(function(p){
+    return'<div class="citem"><div class="citem-top"><span class="citem-lbl">'+esc(p.label||'شماره تماس')+'</span><span class="citem-num">'+phoneShow(p.number)+'</span></div>'+
+      '<div class="citem-btns"><button type="button" class="cbtn primary cm-cp" data-num="'+esc(p.number)+'">کپی شماره</button>'+
+      '<a class="cbtn" href="'+phoneTel(p.number)+'">تماس مستقیم</a></div></div>';
+  }).join('');
+  $$('.cm-cp','#cmList').forEach(function(b){b.onclick=function(){copyText(b.dataset.num)}});
+
   var tgCh=String(s.tgChannel||'').replace(/^@/,'').replace(/^https?:\/\/t\.me\//i,'').trim();
   var tgAd=String(s.tgAdmin||s.telegram||'').replace(/^@/,'').replace(/^https?:\/\/t\.me\//i,'').trim();
   if(tgAd){
@@ -1255,10 +1300,14 @@ function buildHeaderAndFooter(){
   if(tgAd){
     cards.push('<a class="fo-card fo-tg" data-tg="https://t.me/'+encodeURIComponent(tgAd)+'" href="https://t.me/'+encodeURIComponent(tgAd)+'" target="_blank" rel="noopener"><div class="fo-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h4>آیدی ادمین در تلگرام</h4><p dir="ltr" style="text-align:right">@'+esc(tgAd)+'</p></div></a>');
   }
-  cards.push('<a class="fo-card fo-tel" href="'+tel+'"><div class="fo-ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div><div><h4>تماس مستقیم</h4><p dir="ltr" style="text-align:right">'+show+'</p></div></a>');
+  cards.push('<div class="fo-card"><div class="fo-ico"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div><div><h4>شماره‌های تماس</h4><div class="fo-ph-list">'+
+    PHONES.map(function(p){
+      return'<a class="fo-ph-item fo-tel" data-num="'+esc(p.number)+'" href="'+phoneTel(p.number)+'">'+(p.label&&PHONES.length>1?'<small>'+esc(p.label)+'</small>':'')+'<span dir="ltr" style="text-align:right">'+phoneShow(p.number)+'</span></a>';
+    }).join('')+
+  '</div></div></div>');
 
   $('#fo').innerHTML='<div class="fo-grid">'+cards.join('')+'</div><div class="fo-bot">'+esc(s.footerText)+'</div>';
-  bindTelEl($('.fo-tel','#fo'));
+  $$('.fo-tel','#fo').forEach(function(a){bindTelEl(a,a.dataset.num)});
   $$('.fo-tg','#fo').forEach(function(a){a.onclick=function(e){openTgLink(a.dataset.tg,e)}});
 
   var secs=NAV_ITEMS.map(function(n){return $('#'+n.id)}),as=$$('#links a');
@@ -1315,7 +1364,7 @@ try{if(localStorage.getItem('delband_seen'))document.body.classList.add('seen')}
 onScroll();
 
 function boot(d){
-  DATA=d;SITE=DATA.site;
+  DATA=d;SITE=DATA.site;PHONES=SITE.phones;
   var c=SITE.colors,rs=document.documentElement.style;
   ['wall','ink','muted','value','brand','paper','card','line','a1','a2'].forEach(function(k){if(c[k])rs.setProperty('--'+k,c[k])});
   document.documentElement.style.setProperty('--ns',mq.matches?1:Math.max(.62,Math.min(1,window.innerWidth/1440)));
